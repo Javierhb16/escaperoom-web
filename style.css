@@ -93,6 +93,30 @@ body {
   right: 1260px;
 }
 
+.bobesponja{
+    background-image: url(img/bobesponja.png);
+background-size: contain; 
+    background-repeat: no-repeat;
+    position: absolute;
+  width: 10vw;
+  height: 20vh;
+  display: none;
+  left: 949px;
+  top: 80px;
+}
+
+.gato{
+    background-image: url(img/gatete.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  width: 50vw;
+  height: 12vh;
+  display: none;
+  left: 616px;
+  top: 174px;
+}
+
 /* .cocina {
    position: absolute;
   width: 57px;
