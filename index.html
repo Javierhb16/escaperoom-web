@@ -1,17 +1,32 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    
+
     <img src="img/pinto.png" alt="Personaje izquierda" class="izquierda">
 
     <div id="main">
-        <div class="escena"></div>
+        <div class="escena" id="escena"></div>
+        <div class="casa" id="casa" onclick="irCasa()"></div>
+        <div class="parada" id="parada" onclick="irParada()"></div>
+        <div class="bus" id="bus" onclick="bus()"></div>
+        <div class="dentroCasa" id="dentroCasa" onclick="dentroCasa()"></div>
+                <div class="exit" id="exit" onclick="exit()"></div>
+
+
+        
+
+
+
+
+
         <div class="texto">
             <p id="parrafo">
                 Aquí irá la historia o las pistas del Scape Room...
@@ -19,8 +34,9 @@
         </div>
     </div>
     <img src="img/javi.png" alt="Personaje derecha" class="derecha">
-    
+
+    <script src="script.js"></script>
 
 </body>
-<script src="script.js"></script>
+
 </html>

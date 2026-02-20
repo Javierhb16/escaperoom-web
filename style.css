@@ -53,6 +53,69 @@ body {
     font-size: 22px;
 }
 
+.casa {
+    position: absolute;
+    width: 91px;
+    height: 111px;
+    top: 348px;
+    right: 787px;
+}
+
+.parada {
+   position: absolute;
+  width: 88px;
+  height: 90px;
+  top: 527px;
+  right: 1208px;
+}
+
+.bus {
+   position: absolute;
+  width: 377px;
+  height: 394px;
+  top: 266px;
+  right: 398px;
+}
+
+.dentroCasa {
+   position: absolute;
+  width: 57px;
+  height: 85px;
+  top: 522px;
+  right: 773px;
+}
+
+.exit {
+  position: absolute;
+  width: 167px;
+  height: 253px;
+  top: 172px;
+  right: 1260px;
+}
+
+/* .cocina {
+   position: absolute;
+  width: 57px;
+  height: 85px;
+  top: 522px;
+  right: 773px;
+}
+
+.banyo {
+   position: absolute;
+  width: 57px;
+  height: 85px;
+  top: 522px;
+  right: 773px;
+}
+
+.patioTrasero {
+   position: absolute;
+  width: 57px;
+  height: 85px;
+  top: 522px;
+  right: 773px;
+} */
 
 /*body {
     background: #575757;
