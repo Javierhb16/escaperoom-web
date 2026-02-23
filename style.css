@@ -15,8 +15,8 @@ body {
     background-size: contain;   
     background-repeat: no-repeat;
     background-position: bottom;
-    width: 70vw;
-    height: 75vh;
+    width: 1307px;
+    height: 689px;
 
     border-radius: 10px;
     /* box-shadow: 0 0 14px rgba(0,0,0,0.5); */
@@ -40,6 +40,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 1347px;
+    height: 819px;
 }
 
 .texto {
