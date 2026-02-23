@@ -1,5 +1,6 @@
 let dinero = 0.01
 
+
 function irCasa() {
     document.getElementById("escena").style.backgroundImage = "url(img/casa.png)";
 
@@ -7,7 +8,7 @@ function irCasa() {
     document.getElementById("casa").style.display = "none";
     document.getElementById("bus").style.display = "none";
     document.getElementById("exit").style.display = "none";
-
+    document.getElementById("patio").style.display = "block";
     document.getElementById("parrafo").innerHTML = "cuanta gente"
 
 }
@@ -39,7 +40,6 @@ function dentroCasa() {
     document.getElementById("exit").style.display = "block";
     document.getElementById("bobesponja").style.display = "none";
     document.getElementById("gato").style.display = "block";
-
     document.getElementById("parrafo").innerHTML = "estoy en el slon"
 }
 
@@ -66,7 +66,7 @@ function irPatio() {
     document.getElementById("escena").style.backgroundImage = "url(img/patioTrasero.png)";
     document.getElementById("gato").style.display = "none";
     document.getElementById("exit").style.display = "none";
-
+    document.getElementById("minijuegoNano").style.display = "block";
 }
 
 function volverDentro() {
@@ -77,5 +77,9 @@ function volverDentro() {
 }
 
 function minijuegoNano() {
+    document.getElementById("escena").style.backgroundImage = "url(img/fernandoAlonso.png)";
+        document.getElementById("habla").innerHTML = "Fernando Alonso:"
+    document.getElementById("habla").style.color = "darkgreen";
+    document.getElementById("habla").style.fontWeight = "bold";
     
 }

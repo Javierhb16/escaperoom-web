@@ -125,6 +125,7 @@ background-size: contain;
   height: 284px;
   left: 1229px;
   top: 157px;
+  display: none;
 }
 
 .volverDentro {
@@ -133,8 +134,19 @@ background-size: contain;
     height: 165px;
     left: 543px;
     top: 193px;
-
+    display: none;
 }
+
+.minijuegoNano {
+    position: absolute;
+    width: 259px;
+    height: 495px;
+    left: 1127px;
+    top: 144px;
+    display: none;
+}
+
+
 
 /* .cocina {
    position: absolute;
