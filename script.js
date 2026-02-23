@@ -41,8 +41,6 @@ function dentroCasa() {
     document.getElementById("gato").style.display = "block";
 
     document.getElementById("parrafo").innerHTML = "estoy en el slon"
-
-
 }
 
 function exit() {
@@ -52,8 +50,6 @@ function exit() {
     document.getElementById("parrafo").innerHTML = "cuanta gente"
     document.getElementById("bobesponja").style.display = "block";
     document.getElementById("gato").style.display = "none";
-
-
 }
 
 function sonidoBob() {
@@ -66,5 +62,20 @@ function miau() {
     audio.play();
 }
 
+function irPatio() {
+    document.getElementById("escena").style.backgroundImage = "url(img/patioTrasero.png)";
+    document.getElementById("gato").style.display = "none";
+    document.getElementById("exit").style.display = "none";
 
+}
 
+function volverDentro() {
+    document.getElementById("escena").style.backgroundImage = "url(img/salon.png)";
+    document.getElementById("gato").style.display = "block";
+    document.getElementById("exit").style.display = "block";
+
+}
+
+function minijuegoNano() {
+    
+}
