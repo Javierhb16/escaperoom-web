@@ -42,7 +42,8 @@ function dentroCasa() {
     document.getElementById("parada").style.display = "none";
     document.getElementById("dentroCasa").style.display = "none";
     document.getElementById("puertaExit").style.display = "block";
-    document.getElementById("bobesponja").style.display = "none";
+        document.getElementById("cocina").style.display = "block";
+document.getElementById("bobesponja").style.display = "none";
     document.getElementById("gato").style.display = "block";
     document.getElementById("parrafo").innerText = "estoy en el slon"
 }
@@ -62,10 +63,10 @@ function salirCasa() {
 function irCocina() {
     document.getElementById("escena").style.backgroundImage = "url(img/cocina.png)";
     document.getElementById("gato").style.display = "none";
-    document.getElementById("exit").style.display = "none";
+    document.getElementById("puertaExit").style.display = "none";
     document.getElementById("volverSalon").style.display = "block";
-    document.getElementById("bellingham").style.display = "block";
-
+    document.getElementById("minijuegoBellingham").style.display = "block";
+    document.getElementById("patio").style.display = "none";
     document.getElementById("cocina").style.display = "none";
 
     document.getElementById("parrafo").innerHTML = "en la cocina"
@@ -76,9 +77,9 @@ function irCocina() {
 function volverSalon() {
     document.getElementById("escena").style.backgroundImage = "url(img/salon.png)";
     document.getElementById("gato").style.display = "block";
-    document.getElementById("exit").style.display = "block";
+    document.getElementById("puertaExit").style.display = "block";
     document.getElementById("cocina").style.display = "block";
-    document.getElementById("bellingham").style.display = "none";
+    document.getElementById("minijuegoBellingham").style.display = "none";
 
     document.getElementById("volverSalon").style.display = "none";
 
@@ -86,6 +87,8 @@ function volverSalon() {
 
 function minijuegoBellingham() {
     document.getElementById("escena").style.backgroundImage = "url(img/bellinghamDifuminado.png)";
+    document.getElementById("volverSalon").style.display = "none";
+    document.getElementById("minijuegoBellingham").style.display = "none";
 
     
 }
