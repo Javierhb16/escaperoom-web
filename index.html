@@ -18,7 +18,7 @@
         <div class="parada" id="parada" onclick="irParada()"></div>
         <div class="bus" id="bus" onclick="bus()"></div>
         <div class="dentroCasa" id="dentroCasa" onclick="dentroCasa()"></div>
-        <div class="exit" id="exit" onclick="exit()"></div>
+        <div class="puertaExit" id="puertaExit" onclick="salirCasa()"></div>
 
         <div class="patio" id="patio" onclick="irPatio()"></div>
         <div class="volverDentro" id="volverDentro" onclick="volverDentro()"></div>
@@ -40,13 +40,14 @@
 
 
 
-        <div class="texto">
-            <p id="parrafo">
-                <span id="habla">nombre</span>Aquí irá la historia o las pistas del Scape Room...
-            </p>
+        <div class="texto" id="texto">
+            <span id="habla"></span>
+            <span id="parrafo">
+                Aquí irá la historia o las pistas del Scape Room...
+            </span>
         </div>
     </div>
-    <img src="img/javi.png" alt="Personaje derecha" class="derecha">
+    <img src="img/javi.png" id="javi" alt="Personaje derecha" class="derecha">
 
     <script src="script.js"></script>
 
