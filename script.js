@@ -44,7 +44,8 @@ function dentroCasa() {
     document.getElementById("puertaExit").style.display = "block";
     document.getElementById("bobesponja").style.display = "none";
     document.getElementById("gato").style.display = "block";
-    document.getElementById("parrafo").innerText = "estoy en el slon"
+    document.getElementById("parrafo").innerText = "estoy en el slon";
+    document.getElementById("cocina").style.display = "block";
 }
 
 function salirCasa() {
@@ -62,10 +63,10 @@ function salirCasa() {
 function irCocina() {
     document.getElementById("escena").style.backgroundImage = "url(img/cocina.png)";
     document.getElementById("gato").style.display = "none";
-    document.getElementById("exit").style.display = "none";
+    document.getElementById("puertaExit").style.display = "none";
     document.getElementById("volverSalon").style.display = "block";
-    document.getElementById("bellingham").style.display = "block";
-
+    document.getElementById("minijuegoBellingham").style.display = "block";
+    document.getElementById("patio").style.display = "none";
     document.getElementById("cocina").style.display = "none";
 
     document.getElementById("parrafo").innerHTML = "en la cocina"
@@ -86,7 +87,8 @@ function volverSalon() {
 
 function minijuegoBellingham() {
     document.getElementById("escena").style.backgroundImage = "url(img/bellinghamDifuminado.png)";
-
+    document.getElementById("volverSalon").style.display = "none";
+    document.getElementById("minijuegoBellingham").style.display = "none";
     
 }
 
@@ -115,31 +117,6 @@ function volverDentro() {
     document.getElementById
 }
 
-
-// function minijuegoNano() {
-//     document.getElementById("escena").style.backgroundImage = "url(img/fernandoAlonso.png)";
-//     document.getElementById("javi").src = "img/javisorprendido.png";
-//     document.getElementById("minijuegoNano").display = "none";
-
-//     document.getElementById("habla").textContent = "Javier: ";
-//     document.getElementById("habla").style.color = "darkblue";
-//     document.getElementById("habla").style.fontWeight = "bold";
-//     document.getElementById("parrafo").textContent = "¡PERO SI ES FERNANDO ALONSO!";
-
-//     // document.getElementById("texto").onclick = function() {
-//     //     pasarDialogo("Fernando Alonso: ", "darkgreen", "Hola macho el motor Honda no corre");
-//     // }
-
-//     // document.getElementById("texto").onclick = function() {
-//     //     pasarDialogo("Fernando Alonso: ", "darkgreen", "el motol ase balbacoa");
-//     // }
-
-//     // document.getElementById("habla").textContent = "Fernando Alonso: ";
-//     // document.getElementById("habla").style.color = "darkgreen";
-//     // document.getElementById("parrafo").textContent = "ola";
-
-// }
-
 function pasarDialogo(textContentHabla, styleColor, textContentParrafo) {
     document.getElementById("habla").textContent = textContentHabla;
     document.getElementById("habla").style.color = styleColor;
@@ -155,6 +132,7 @@ function minijuegoNano() {
         document.getElementById("escena").style.backgroundImage = "url(img/fernandoAlonso.png)";
         document.getElementById("javi").src = "img/javisorprendido.png";
         document.getElementById("minijuegoNano").style.display = "none";
+        document.getElementById("patio").style.display = "none";
         pasoNano = 0;
         document.getElementById("texto").onclick = avanzarNano;
         avanzarNano();
