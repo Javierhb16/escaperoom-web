@@ -43,6 +43,7 @@ function dentroCasa() {
     document.getElementById("exit").style.display = "block";
     document.getElementById("bobesponja").style.display = "none";
     document.getElementById("gato").style.display = "block";
+    document.getElementById("cocina").style.display = "block";
 
     document.getElementById("parrafo").innerHTML = "estoy en el slon"
 
@@ -59,6 +60,32 @@ function exit() {
 
     document.getElementById("parrafo").innerHTML = "cuanta gente"
 
+}
+
+function irCocina(){
+    document.getElementById("escena").style.backgroundImage = "url(img/cocina.png)";
+    document.getElementById("gato").style.display = "none";
+    document.getElementById("exit").style.display = "none";
+    document.getElementById("volverSalon").style.display = "block";
+    document.getElementById("cocina").style.display = "none";
+
+    document.getElementById("parrafo").innerHTML = "en la cocina"
+
+
+}
+
+function volverSalon(){
+    document.getElementById("escena").style.backgroundImage = "url(img/salon.png)";
+    document.getElementById("gato").style.display = "block";
+    document.getElementById("exit").style.display = "block";
+        document.getElementById("cocina").style.display = "block";
+
+    document.getElementById("volverSalon").style.display = "none";
+
+}
+
+function minijuegoBellingam(){
+    
 }
 
 function sonidoBob() {
