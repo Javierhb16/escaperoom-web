@@ -6,13 +6,14 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #2e2f4f; /* opcional */
+    background: #2e2f4f;
+    /* opcional */
     font-family: 'Bricolage Grotesque';
 }
 
 .escena {
     background-image: url("img/paradaBus.png");
-    background-size: contain;   
+    background-size: contain;
     background-repeat: no-repeat;
     background-position: bottom;
     width: 1307px;
@@ -22,7 +23,8 @@ body {
     /* box-shadow: 0 0 14px rgba(0,0,0,0.5); */
 }
 
-.derecha, .izquierda {
+.derecha,
+.izquierda {
     position: absolute;
     bottom: 0;
     height: 35vw;
@@ -50,7 +52,7 @@ body {
     padding: 20px;
     background: white;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     text-align: center;
     font-size: 22px;
 }
@@ -64,62 +66,89 @@ body {
 }
 
 .parada {
-   position: absolute;
-  width: 88px;
-  height: 90px;
-  top: 527px;
-  right: 1233px;
-  display: none;
+    position: absolute;
+    width: 88px;
+    height: 90px;
+    top: 527px;
+    right: 1233px;
+    display: none;
 }
 
 .bus {
-   position: absolute;
-  width: 377px;
-  height: 394px;
-  top: 266px;
-  right: 428px;
+    position: absolute;
+    width: 377px;
+    height: 394px;
+    top: 266px;
+    right: 428px;
 }
 
 .dentroCasa {
-   position: absolute;
-  width: 57px;
-  height: 85px;
-  top: 522px;
-  right: 802px;
-  display: none;
+    position: absolute;
+    width: 57px;
+    height: 85px;
+    top: 522px;
+    right: 802px;
+    display: none;
 }
 
 .exit {
-  position: absolute;
-  width: 167px;
-  height: 253px;
-  top: 172px;
-  right: 1286px;
-  display: none;
+    position: absolute;
+    width: 167px;
+    height: 253px;
+    top: 172px;
+    right: 1286px;
+    display: none;
 }
 
-.bobesponja{
+.cocina {
+    position: absolute;
+    width: 116px;
+    height: 245px;
+    top: 168px;
+    right: 993px;
+    display: none;
+}
+
+.volverSalon {
+    position: absolute;
+    width: 178px;
+    height: 420px;
+    top: 168px;
+    right: 553px;
+    display: none;
+}
+
+.bellingham {
+    position: absolute;
+    width: 229px;
+    height: 639px;
+    top: 127px;
+    right: 738px;
+    display: none;
+}
+
+.bobesponja {
     background-image: url(img/bobesponja.png);
-background-size: contain; 
+    background-size: contain;
     background-repeat: no-repeat;
     position: absolute;
-  width: 10vw;
-  height: 20vh;
-  display: none;
-  left: 991px;
-  top: 80px;
+    width: 10vw;
+    height: 20vh;
+    display: none;
+    left: 991px;
+    top: 80px;
 }
 
-.gato{
-  background-image: url(img/gatete.png);
-  background-size: contain;
-  background-repeat: no-repeat;
-  position: absolute;
-  width: 125px;
-  height: 125px;
-  display: none;
-  left: 645px;
-  top: 174px;
+.gato {
+    background-image: url(img/gatete.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    width: 125px;
+    height: 125px;
+    display: none;
+    left: 645px;
+    top: 174px;
 }
 
 .patio {
@@ -212,4 +241,3 @@ background-size: contain;
 .izquierda {
     left: 10px;
 } */
-
