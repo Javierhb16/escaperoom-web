@@ -50,6 +50,7 @@ function dentroCasa() {
     document.getElementById("gato").style.display = "block";
     document.getElementById("parrafo").innerText = "estoy en el slon";
     document.getElementById("cocina").style.display = "block";
+    document.getElementById("banyo").style.display = "block";
 }
 
 function salirCasa() {
@@ -86,6 +87,7 @@ function volverSalon() {
     document.getElementById("minijuegoBellingham").style.display = "none";
     document.getElementById("volverSalon").style.display = "none";
     document.getElementById("patio").style.display = "block";
+    document.getElementById("banyo").style.display = "block";
 }
 
 function minijuegoBellingham() {
@@ -195,7 +197,7 @@ function avanzarNano() {
         document.getElementById("monedaNano").src = "img/monedanano1.png";
         dinero += 0.33;
         actualizarDinero(dinero);
-        pasarDialogo("", "black", "Has obtenido 33 NanoCéntimos. Te quedan " + (1.00 - dinero) + " para poder coger el autobús");
+        pasarDialogo("", "black", "Has obtenido 33 NanoCéntimos. Te quedan " + (1.00 - dinero).toFixed(2) + " para poder coger el autobús");
     }
     else {
         document.getElementById("texto").onclick = null; // Terminar diálogo
@@ -247,3 +249,25 @@ function ganarMinijuegoNano() {
         }
     }
 }
+
+function irBanyo() {
+    document.getElementById("escena").style.backgroundImage = "url(img/banyo.png)";
+    document.getElementById("puertaExit").style.display = "none";
+    document.getElementById("gato").style.display = "none";
+    document.getElementById("cocina").style.display = "none";
+    document.getElementById("banyo").style.display = "none";
+    document.getElementById("patio").style.display = "none";
+    document.getElementById("salirBanyo").style.display = "block";
+}
+
+function salirBanyo() {
+    document.getElementById("escena").style.backgroundImage = "url(img/salon.png)";
+    document.getElementById("puertaExit").style.display = "block";
+    document.getElementById("gato").style.display = "block";
+    document.getElementById("cocina").style.display = "block";
+    document.getElementById("banyo").style.display = "block";
+    document.getElementById("patio").style.display = "block";
+    document.getElementById("salirBanyo").style.display = "none";
+}
+
+function minijuego

@@ -223,6 +223,24 @@ body {
     -moz-box-shadow: 0 0 10px 0 rgba(255,255,255,0.5);
 }
 
+.banyo {
+    position: absolute;
+    width: 126px;
+    height: 258px;
+    top: 184px;
+    right: 706px;
+    display: none;
+}
+
+.salirBanyo {
+    position: absolute;
+    width: 239px;
+    height: 530px;
+    top: 51px;
+    right: 1188px;
+    display: none;
+}
+
 /* .cocina {
    position: absolute;
   width: 57px;
