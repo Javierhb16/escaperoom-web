@@ -1,5 +1,9 @@
 let dinero = 0.01
+actualizarDinero(dinero);
 
+function actualizarDinero(dinero) {
+    document.getElementById("dinero").innerText = dinero + "€";
+}
 
 function irCasa() {
     document.getElementById("escena").style.backgroundImage = "url(img/casa.png)";
@@ -190,6 +194,7 @@ function avanzarNano() {
         document.getElementById("javi").src = "img/javiDinero.png";
         document.getElementById("monedaNano").src = "img/monedanano1.png";
         dinero += 0.33;
+        actualizarDinero(dinero);
         pasarDialogo("", "black", "Has obtenido 33 NanoCéntimos. Te quedan " + (1.00 - dinero) + " para poder coger el autobús");
     }
     else {
