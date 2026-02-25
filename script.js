@@ -77,12 +77,11 @@ function irCocina() {
 function volverSalon() {
     document.getElementById("escena").style.backgroundImage = "url(img/salon.png)";
     document.getElementById("gato").style.display = "block";
-    document.getElementById("exit").style.display = "block";
+    document.getElementById("puertaExit").style.display = "block";
     document.getElementById("cocina").style.display = "block";
-    document.getElementById("bellingham").style.display = "none";
-
+    document.getElementById("minijuegoBellingham").style.display = "none";
     document.getElementById("volverSalon").style.display = "none";
-
+    document.getElementById("patio").style.display = "block";
 }
 
 function minijuegoBellingham() {
@@ -108,13 +107,18 @@ function irPatio() {
     document.getElementById("puertaExit").style.display = "none";
     document.getElementById("minijuegoNano").style.display = "block";
     document.getElementById("volverDentro").style.display = "block";
+    document.getElementById("cocina").style.display = "none";
 }
 
 function volverDentro() {
     document.getElementById("escena").style.backgroundImage = "url(img/salon.png)";
     document.getElementById("gato").style.display = "block";
     document.getElementById("puertaExit").style.display = "block";
-    document.getElementById
+    document.getElementById("cocina").style.display = "block";
+    document.getElementById("volverDentro").style.display = "none";
+    document.getElementById("minijuegoNano").style.display = "none";
+    document.getElementById("patio").style.display = "block";
+
 }
 
 function pasarDialogo(textContentHabla, styleColor, textContentParrafo) {
@@ -132,6 +136,7 @@ function minijuegoNano() {
         document.getElementById("escena").style.backgroundImage = "url(img/fernandoAlonso.png)";
         document.getElementById("javi").src = "img/javisorprendido.png";
         document.getElementById("minijuegoNano").style.display = "none";
+        document.getElementById("volverDentro").style.display = "none";
         document.getElementById("patio").style.display = "none";
         pasoNano = 0;
         document.getElementById("texto").onclick = avanzarNano;
@@ -146,30 +151,80 @@ function avanzarNano() {
         pasarDialogo("Javier: ", "darkblue", "¡PERO SI ES FERNANDO ALONSO!");
     }
     else if (pasoNano == 1) {
-        pasarDialogo("Fernando Alonso: ", "darkgreen", "Hola muchacho. ¿Te gusta mi nueva barbacoa?");
+        pasarDialogo("Fernando Alonso: ", "darkgreen", "Hombre claro, ¿quién va a ser? El único piloto que ha convertido un Aston Martin en una Cecotec de jardín");
     }
     else if (pasoNano == 2) {
-        pasarDialogo("Fernando Alonso: ", "darkgreen", "Es el Aston Martin del 2026, con el nuevo motor Honda");
+        pasarDialogo("Fernando Alonso: ", "darkgreen", "El motor es decepcionante, no sobrevive más de dos minutos sin hacer chamusquina");
     }
     else if (pasoNano == 3) {
-        pasarDialogo("Fernando Alonso: ", "darkgreen", "No puede acabar una carrera");
+        pasarDialogo("Fernando Alonso: ", "darkgreen", "Este año el coche no corre, pero por lo menos las chistorras salen cojonudas");
     }
     else if (pasoNano == 4) {
-        pasarDialogo("Fernando Alonso: ", "darkgreen", "El motol ase balbacoa");
+        pasarDialogo("Javier: ", "darkblue", "Bueno, supongo que entonces la 33 tampoco llegará este año...");
+        document.getElementById("javi").src = "img/javiDecepcionado.png";
     }
     else if (pasoNano == 5) {
-        pasarDialogo("Fernando Alonso: ", "darkgreen", "El motol ase balbacoa");
+        pasarDialogo("Fernando Alonso: ", "darkgreen", "Alegra esa cara, chaval. Mira, te voy a demostrar que sabes más que los ingenieros de Honda");
     }
     else if (pasoNano == 6) {
-        pasarDialogo("Fernando Alonso: ", "darkgreen", "El motol ase balbacoa");
+        pasarDialogo("Fernando Alonso: ", "darkgreen", "Dime, ¿cuál de las siguientes ecuaciones da '33' como resultado?");
+        document.getElementById("javi").src = "img/javiPensativo.png";
+        preguntasMinijuegoNano();
+    }
+    else if (pasoNano == 8) {
+        pasarDialogo("Fernando Alonso: ", "darkgreen", "¡PREMIO PARA EL CABALLERO!");
+    }
+    else if (pasoNano == 9) {
+        pasarDialogo("Fernando Alonso: ", "darkgreen", "Da igual cuál hubieses elegido, todas daban 33");
+    }
+    else if (pasoNano == 10) {
+        pasarDialogo("Fernando Alonso: ", "darkgreen", "Es como la estrategia de carrera, da igual cuál usemos, porque con todas quedamos últimos");
     }
     
     else {
         document.getElementById("texto").onclick = null; // Terminar diálogo
         // Finalizar el minijuego y volver a la escena anterior
         irPatio();
+        document.getElementById("javi").src = "img/javi.png";
         // Quitarle la posibilidad al jugador de que vuelva a jugar el minijuego
         puedeJugarNano = false;
     }
     pasoNano++;
+}
+
+function preguntasMinijuegoNano() {
+    // Pausar el avance de diálogos durante esta parte del minijuego
+    document.getElementById("texto").onclick = null;
+
+    let ecuaciones = document.getElementById("ecuaciones");
+    let e1 = document.createElement("img");
+    let e2 = document.createElement("img");
+    let e3 = document.createElement("img");
+    e1.src = "img/formula1.png";
+    e2.src = "img/formula2.png";
+    e3.src = "img/formula3.png";
+    e1.className = "ecuacion";
+    e2.className = "ecuacion";
+    e3.className = "ecuacion";
+    ecuaciones.appendChild(e1);
+    ecuaciones.appendChild(e2);
+    ecuaciones.appendChild(e3);
+
+    ecuaciones.style.display = "flex";
+    ecuaciones.style.flexDirection = "column";
+    ecuaciones.style.position = "absolute";
+
+    ganarMinijuegoNano();
+}
+
+function ganarMinijuegoNano() {
+    let e = document.getElementsByClassName("ecuacion");
+    for (let i = 0; i < e.length; i++) {
+        e[i].onclick = function() {
+            pasoNano++;
+            document.getElementById("texto").onclick = avanzarNano;
+            document.getElementById("ecuaciones").style.display = "none";
+            avanzarNano();
+        }
+    }
 }
