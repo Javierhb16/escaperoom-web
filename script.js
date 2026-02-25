@@ -258,6 +258,7 @@ function irBanyo() {
     document.getElementById("banyo").style.display = "none";
     document.getElementById("patio").style.display = "none";
     document.getElementById("salirBanyo").style.display = "block";
+    document.getElementById("minijuegoBanyo").style.display = "block";
 }
 
 function salirBanyo() {
@@ -268,6 +269,81 @@ function salirBanyo() {
     document.getElementById("banyo").style.display = "block";
     document.getElementById("patio").style.display = "block";
     document.getElementById("salirBanyo").style.display = "none";
+    document.getElementById("minijuegoBanyo").style.display = "none";
+
 }
 
-function minijuego
+function minijuegoBanyo() {
+    document.getElementById("escena").style.backgroundImage = "url(img/keypad.png)";
+    document.getElementById("minijuegoBanyo").style.display = "none";
+    document.getElementById("salirBanyo").style.display = "none";
+    crearKeypad();
+}
+
+function crearKeypad() {
+    const contenedor = document.getElementById("escena");
+    const pantalla = document.createElement("div");
+    pantalla.id = "pantalla";
+    contenedor.appendChild(pantalla);
+
+    for (let i = 0; i <= 9; i++) {
+        let boton = document.createElement("div");
+        boton.className = "boton";
+        boton.id = "btn" + i;          
+
+        boton.onclick = function() {   
+            teclear(i);
+        };
+        boton.style.display = "block";
+        contenedor.appendChild(boton);
+    }
+
+    let borrar = document.createElement("div");
+    borrar.className = "boton borrar";
+    borrar.id = "borrar";
+    borrar.textContent = "x";
+    borrar.onclick = function() {
+        borrarUltimo();
+    };
+    contenedor.appendChild(borrar);
+
+    let enviar = document.createElement("div");
+    enviar.className = "boton enviar";
+    enviar.id = "enviar";
+    enviar.textContent = "➜";
+    enviar.onclick = function() {
+        comprobarCodigo();
+    };
+    contenedor.appendChild(enviar);
+}
+
+
+// function crearKeypad() {
+//     let btn0 = document.createElement("div");
+//     document.id
+//     let btn1 = document.createElement("div");
+//     let btn2 = document.createElement("div");
+//     let btn3 = document.createElement("div");
+//     let btn4 = document.createElement("div");
+//     let btn5 = document.createElement("div");
+//     let btn6 = document.createElement("div");
+//     let btn7 = document.createElement("div");
+//     let btn8 = document.createElement("div");
+//     let btn9 = document.createElement("div");
+//     let borrar = document.createElement("div");
+//     let enviar = document.createElement("div");
+//     let pantalla = document.createElement("div");
+
+//     let botonesNumeros = { btn0, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9  };
+//     for (let i = 0; i < botonesNumeros.length; i++) {
+//         botonesNumeros[i].className = "boton";
+//         botonesNumeros[i].onclick = teclear(i);
+//     }
+    
+
+
+// }
+
+function teclear(tecla) {
+    alert(tecla);
+}

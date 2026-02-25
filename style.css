@@ -241,6 +241,75 @@ body {
     display: none;
 }
 
+.minijuegoBanyo {
+    position: absolute;
+    width: 213px;
+    height: 200px;
+    top: 51px;
+    right: 536px;
+    display: none;
+}
+
+.boton {
+    display: none;
+    background-color: peru;
+    position: absolute;
+    width: 65px;
+    height: 60px;
+}
+
+#btn0 {
+    top: 561px;
+    left: 832px;
+}
+
+#btn1 {
+    top: 337px;
+    left: 747px;
+}
+
+#btn2 {
+    top: 337px;
+    left: 832px;
+}
+
+#btn3 {
+    top: 337px;
+    left: 916px;
+}
+
+#btn4 {
+    top: 413px;
+    left: 748px;
+}
+
+#btn5 {
+    top: 413px;
+    left: 832px;
+}
+
+#btn6 {
+    top: 413px;
+    left: 916px;
+}
+
+#btn7 {
+    top: 489px;
+    left: 748px;
+}
+
+#btn8 {
+    top: 489px;
+    left: 832px;
+}
+
+#btn9 {
+    top: 489px;
+    left: 917px;
+}
+
+
+
 /* .cocina {
    position: absolute;
   width: 57px;
