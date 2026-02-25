@@ -46,8 +46,8 @@ function dentroCasa() {
     document.getElementById("parada").style.display = "none";
     document.getElementById("dentroCasa").style.display = "none";
     document.getElementById("puertaExit").style.display = "block";
-        document.getElementById("cocina").style.display = "block";
-document.getElementById("bobesponja").style.display = "none";
+    document.getElementById("cocina").style.display = "block";
+    document.getElementById("bobesponja").style.display = "none";
     document.getElementById("gato").style.display = "block";
     document.getElementById("parrafo").innerText = "estoy en el slon";
     document.getElementById("cocina").style.display = "block";
@@ -89,11 +89,81 @@ function volverSalon() {
     document.getElementById("patio").style.display = "block";
 }
 
+let pasoBellingham = 0;
+let puedeJugarBellingham = true;
+let hablarSegundaVez = false;
+let botellas = 3;
+
 function minijuegoBellingham() {
-    document.getElementById("escena").style.backgroundImage = "url(img/bellinghamDifuminado.png)";
-    document.getElementById("volverSalon").style.display = "none";
-    document.getElementById("minijuegoBellingham").style.display = "none";
-    
+    if (puedeJugarBellingham == true && hablarSegundaVez == false) {
+        document.getElementById("escena").style.backgroundImage = "url(img/bellinghamDifuminado.png)";
+        document.getElementById("minijuegoBellingham").style.display = "none";
+        document.getElementById("volverSalon").style.display = "none";
+        pasoBellingham = 0;
+        document.getElementById("texto").onclick = avanzarBellingham;
+        avanzarBellingham();
+        puedeJugarBellingham = false;
+        hablarSegundaVez = true
+    } else if (puedeJugarBellingham == false && hablarSegundaVez == true) {
+        if (botellas == 0) {
+            document.getElementById("parrafo").innerText = "Te faltan 3 botellas"
+        } else if (botellas == 1) {
+            document.getElementById("parrafo").innerText = "Te faltan 2 botellas"
+        } else if (botellas == 2) {
+            document.getElementById("parrafo").innerText = "Te falta 1 botella"
+        } else if (botellas == 3) {
+            hablarSegundaVez = false;
+            
+        }
+    } else if (puedeJugarBellingham == false && hablarSegundaVez == false) {
+        document.getElementById("escena").style.backgroundImage = "url(img/bellinghamDifuminado.png)";
+        document.getElementById("texto").onclick = avanzarBellingham2;
+        avanzarBellingham2();
+    }
+}
+
+function avanzarBellingham() {
+    if (pasoBellingham == 0) {
+        pasarDialogo("Javier: ", "darkblue", "Hola bellingham");
+    } else if (pasoBellingham == 1) {
+        pasarDialogo("Bellingham: ", "pink", "Houla amigou como estás, yo bien contentou");
+    } else if (pasoBellingham == 2) {
+        pasarDialogo("Javier: ", "darkblue", "Ya veo ya. Por algun casual no me podrias prestar diero?");
+    } else if (pasoBellingham == 3) {
+        pasarDialogo("Bellingham: ", "pink", "Clarou amigou, si me consuigues 3 botellas de jugo de la felicidad te presto dinero");
+    } else if (pasoBellingham == 4) {
+        pasarDialogo("Javier: ", "darkblue", "Ahora te los traigo");
+    } else {
+        document.getElementById("texto").onclick = null;
+        irCocina();
+        document.getElementById("texto").style.fontWeight = "normal";
+    }
+    pasoBellingham++;
+}
+
+let pasoBellingham2 = 0;
+function avanzarBellingham2() {
+    if (pasoBellingham == 0) {
+        pasarDialogo("Javier: ", "darkblue", "Ya te las he traido");
+    } else if (pasoBellingham == 1) {
+        pasarDialogo("Bellingham: ", "pink", "grasias amigou");
+    } else if (pasoBellingham == 2) {
+        document.getElementById("texto").style.fontWeight = "bold";
+        document.getElementById("javi").src = "img/javiDinero.png";
+        document.getElementById("monedaNano").src = "img/monedanano2.png";
+        dinero += 0.33;
+        actualizarDinero(dinero);
+        pasarDialogo("", "black", "Has obtenido 33 NanoCéntimos. Te quedan " + (1.00 - dinero).toFixed(2) + " para poder coger el autobús");
+    } else {
+        document.getElementById("texto").onclick = null;
+        irCocina();
+        document.getElementById("texto").style.fontWeight = "normal";
+        document.getElementById("javi").src = "img/javi.png";
+        document.getElementById("texto").style.fontWeight = "normal";
+        document.getElementById("monedaNano").src = ""
+    }
+    pasoBellingham2++;
+
 }
 
 function sonidoBob() {
@@ -196,7 +266,7 @@ function avanzarNano() {
         document.getElementById("monedaNano").src = "img/monedanano1.png";
         dinero += 0.33;
         actualizarDinero(dinero);
-        pasarDialogo("", "black", "Has obtenido 33 NanoCéntimos. Te quedan " + (1.00 - dinero) + " para poder coger el autobús");
+        pasarDialogo("", "black", "Has obtenido 33 NanoCéntimos. Te quedan " + (1.00 - dinero).toFixed(2) + " para poder coger el autobús");
     }
     else {
         document.getElementById("texto").onclick = null; // Terminar diálogo
@@ -240,7 +310,7 @@ function preguntasMinijuegoNano() {
 function ganarMinijuegoNano() {
     let e = document.getElementsByClassName("ecuacion");
     for (let i = 0; i < e.length; i++) {
-        e[i].onclick = function() {
+        e[i].onclick = function () {
             pasoNano++;
             document.getElementById("texto").onclick = avanzarNano;
             document.getElementById("ecuaciones").style.display = "none";
