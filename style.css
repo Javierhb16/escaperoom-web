@@ -178,6 +178,12 @@ body {
     display: none;
 }
 
+.monedaNano {
+    position: absolute;
+    top: 120px;
+    width: 600px;
+}
+
 .ecuaciones {
     display: none;
     border: 4px solid rgba(116, 116, 116, 0.124);

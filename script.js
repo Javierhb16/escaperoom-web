@@ -142,7 +142,7 @@ function minijuegoNano() {
         document.getElementById("texto").onclick = avanzarNano;
         avanzarNano();
     } else {
-        document.getElementById("texto").innerText = "Ya has jugado a este minijuego";
+        pasarDialogo("Pinto: ", "gray", "Has dejado a Alonso sin un duro, a pedir limosna a otro lado");
     }
 }
 
@@ -173,14 +173,25 @@ function avanzarNano() {
     }
     else if (pasoNano == 8) {
         pasarDialogo("Fernando Alonso: ", "darkgreen", "¡PREMIO PARA EL CABALLERO!");
+        document.getElementById("javi").src = "img/javisorprendido.png";
     }
     else if (pasoNano == 9) {
         pasarDialogo("Fernando Alonso: ", "darkgreen", "Da igual cuál hubieses elegido, todas daban 33");
     }
     else if (pasoNano == 10) {
-        pasarDialogo("Fernando Alonso: ", "darkgreen", "Es como la estrategia de carrera, da igual cuál usemos, porque con todas quedamos últimos");
+        // pasarDialogo("Fernando Alonso: ", "darkgreen", "Es como la estrategia de carrera, da igual cuál usemos, porque con todas quedamos últimos");
+        pasarDialogo("Fernando Alonso: ", "darkgreen", "Al final lo importante es hacerlo todo de corazón, aunque no tengas ni idea de lo que estás haciendo");
     }
-    
+    else if (pasoNano == 11) {
+        pasarDialogo("Fernando Alonso: ", "darkgreen", "Toma, te has ganado esto por ser un tío tan listo");
+    }
+    else if (pasoNano == 12) {
+        document.getElementById("texto").style.fontWeight = "bold";
+        document.getElementById("javi").src = "img/javiDinero.png";
+        document.getElementById("monedaNano").src = "img/monedanano1.png";
+        dinero += 0.33;
+        pasarDialogo("", "black", "Has obtenido 33 NanoCéntimos. Te quedan " + (1.00 - dinero) + " para poder coger el autobús");
+    }
     else {
         document.getElementById("texto").onclick = null; // Terminar diálogo
         // Finalizar el minijuego y volver a la escena anterior
@@ -188,6 +199,9 @@ function avanzarNano() {
         document.getElementById("javi").src = "img/javi.png";
         // Quitarle la posibilidad al jugador de que vuelva a jugar el minijuego
         puedeJugarNano = false;
+        // Cambiar las letras del úlitmo diálogo a su estado normal
+        document.getElementById("texto").style.fontWeight = "normal";
+        document.getElementById("monedaNano").src = "";
     }
     pasoNano++;
 }
