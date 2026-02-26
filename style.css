@@ -252,7 +252,6 @@ body {
 
 .boton {
     display: none;
-    background-color: peru;
     position: absolute;
     width: 65px;
     height: 60px;
@@ -308,7 +307,43 @@ body {
     left: 917px;
 }
 
+#enviar {
+    top: 561px;
+    left: 917px;
+    width: 149px;
+}
 
+#borrar {
+    top: 561px;
+    left: 748px;
+}
+
+#pantalla {
+    display: none;
+    position: absolute;
+    font-size: 50px;
+    top: 150px;
+    left: 740px;
+}
+
+#imagenNanoNumerin {
+    display: none;
+    position: absolute;
+    top: 335px;
+    left: 1000px;
+    width: 150px;
+}
+
+.volverBanyo {
+    position: absolute;
+    background-color: white;
+    padding: 10px;
+    font-size: 16px;
+    border: 3px solid gray;
+    border-radius: 15px;
+    left: 491px;
+    top: 100px;
+}
 
 /* .cocina {
    position: absolute;

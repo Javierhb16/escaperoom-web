@@ -273,17 +273,24 @@ function salirBanyo() {
 
 }
 
+let puedeJugarCajaFuerte = true;
+
 function minijuegoBanyo() {
-    document.getElementById("escena").style.backgroundImage = "url(img/keypad.png)";
-    document.getElementById("minijuegoBanyo").style.display = "none";
-    document.getElementById("salirBanyo").style.display = "none";
-    crearKeypad();
+    if (puedeJugarCajaFuerte) {
+        crearKeypad();
+        document.getElementById("escena").style.backgroundImage = "url(img/keypad.png)";
+        document.getElementById("minijuegoBanyo").style.display = "none";
+        document.getElementById("salirBanyo").style.display = "none";
+    } else {
+        pasarDialogo("Pinto: ", "gray", "“La riqueza no consiste en tener grandes posesiones, sino en tener pocas necesidades.” — Epicteto");
+    }
 }
 
 function crearKeypad() {
     const contenedor = document.getElementById("escena");
     const pantalla = document.createElement("div");
     pantalla.id = "pantalla";
+    pantalla.style.display = "block";
     contenedor.appendChild(pantalla);
 
     for (let i = 0; i <= 9; i++) {
@@ -301,49 +308,114 @@ function crearKeypad() {
     let borrar = document.createElement("div");
     borrar.className = "boton borrar";
     borrar.id = "borrar";
-    borrar.textContent = "x";
     borrar.onclick = function() {
-        borrarUltimo();
+        borrarPantalla();
     };
+    borrar.style.display = "block";
     contenedor.appendChild(borrar);
 
     let enviar = document.createElement("div");
     enviar.className = "boton enviar";
     enviar.id = "enviar";
-    enviar.textContent = "➜";
     enviar.onclick = function() {
         comprobarCodigo();
     };
+    enviar.style.display = "block";
     contenedor.appendChild(enviar);
+
+    // ARREGLAR BOTÓN, DA PROBLEMAS
+    // let volverBanyo = document.createElement("div");
+    // volverBanyo.id = "volverBanyo";
+    // volverBanyo.className = "volverBanyo";
+    // volverBanyo.innerText = "Volver al baño";
+    // contenedor.appendChild(volverBanyo);
+    // volverBanyo.onclick = function() {
+    //     document.getElementById("escena").style.backgroundImage = "url(img/banyo.png)";
+    //     document.getElementById("salirBanyo").style.display = "block";
+    //     document.getElementById("minijuegoBanyo").style.display = "block";
+    //     document.getElementById("pantalla").innerText = "";
+    //     document.getElementById("pantalla").style.display = "none";
+    //     let botones = document.getElementsByClassName("boton");
+    //     for (let i = 0; i < botones.length; i++) {
+    //         botones[i].style.display = "none";
+    //     }
+    //     volverBanyo.style.display = "none";
+    // }
 }
 
-
-// function crearKeypad() {
-//     let btn0 = document.createElement("div");
-//     document.id
-//     let btn1 = document.createElement("div");
-//     let btn2 = document.createElement("div");
-//     let btn3 = document.createElement("div");
-//     let btn4 = document.createElement("div");
-//     let btn5 = document.createElement("div");
-//     let btn6 = document.createElement("div");
-//     let btn7 = document.createElement("div");
-//     let btn8 = document.createElement("div");
-//     let btn9 = document.createElement("div");
-//     let borrar = document.createElement("div");
-//     let enviar = document.createElement("div");
-//     let pantalla = document.createElement("div");
-
-//     let botonesNumeros = { btn0, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9  };
-//     for (let i = 0; i < botonesNumeros.length; i++) {
-//         botonesNumeros[i].className = "boton";
-//         botonesNumeros[i].onclick = teclear(i);
-//     }
-    
-
-
-// }
-
 function teclear(tecla) {
-    alert(tecla);
+    if (document.getElementById("pantalla").innerText == "INCORRECTO") {
+        document.getElementById("pantalla").innerText = "";
+    }
+    if (document.getElementById("pantalla").innerText.length < 3) {
+        document.getElementById("pantalla").innerText += tecla; 
+    }
+}
+
+function borrarPantalla() {
+    document.getElementById("pantalla").innerText = ""; 
+}
+
+function comprobarCodigo() {
+    let codigoCorrecto = 239;
+    let introducido = parseInt(document.getElementById("pantalla").innerText);
+    if (introducido == 333) {
+        let imagenNanoNumerin = document.createElement("img");
+        imagenNanoNumerin.style.display = "block";
+        imagenNanoNumerin.src = "img/numerin.png";
+        imagenNanoNumerin.className = "imagenNanoNumerin";
+        imagenNanoNumerin.id = "imagenNanoNumerin";
+        document.getElementById("escena").appendChild(imagenNanoNumerin);
+        document.getElementById("pantalla").innerText = "";
+    }
+    else if (introducido != codigoCorrecto) {
+        document.getElementById("pantalla").innerText = "INCORRECTO";
+    }
+    else if (introducido == codigoCorrecto) {
+        abrirCajaFuerte();
+    }
+}
+
+function abrirCajaFuerte() {
+    if (document.getElementById("imagenNanoNumerin") != null) {
+        document.getElementById("imagenNanoNumerin").style.display = "none";
+    }
+    let botones = document.getElementsByClassName("boton");
+    for (let i = 0; i < botones.length; i++) {
+        botones[i].style.display = "none";
+    }
+
+    document.getElementById("pantalla").style.display = "none";
+    document.getElementById("escena").backgroundImage = "url("
+
+    document.getElementById("texto").onclick = function() {
+        avanzarCajaFuerte();
+    }
+    avanzarCajaFuerte();
+}
+
+let pasoCajaFuerte = 0;
+
+function avanzarCajaFuerte() {
+    if (pasoCajaFuerte == 0) {
+        document.getElementById("javi").src = "img/javisorprendido.png";
+        pasarDialogo("Javier: ", "darkblue", "¡Pues sí que tiene dinero esta gente!");
+        document.getElementById("escena").style.backgroundImage = "url(img/cajaFuerteAbierta.png)";
+    } else if (pasoCajaFuerte == 1) {
+        document.getElementById("javi").src = "img/javi.png";
+        pasarDialogo("Javier: ", "darkblue", "Bueno, creo que voy a llevarme solo lo que necesito");
+    } else if (pasoCajaFuerte == 2) {
+        document.getElementById("texto").style.fontWeight = "bold";
+        document.getElementById("javi").src = "img/javiDinero.png";
+        dinero += 0.33;
+        actualizarDinero(dinero);
+        pasarDialogo("", "black", "Has obtenido 33 NanoCéntimos. Te quedan " + (1.00 - dinero).toFixed(2) + " para poder coger el autobús");
+    } else {
+        document.getElementById("javi").src = "img/javi.png";
+        document.getElementById("escena").style.backgroundImage = "url(img/banyo.png)";
+        document.getElementById("minijuegoBanyo").style.display = "block";
+        document.getElementById("salirBanyo").style.display = "block";
+        puedeJugarCajaFuerte = false;
+    }
+    pasoCajaFuerte++;
 }
