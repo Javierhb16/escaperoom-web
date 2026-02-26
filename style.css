@@ -272,6 +272,128 @@ body {
     -moz-box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.5);
 }
 
+.banyo {
+    position: absolute;
+    width: 126px;
+    height: 258px;
+    top: 184px;
+    right: 706px;
+    display: none;
+}
+
+.salirBanyo {
+    position: absolute;
+    width: 239px;
+    height: 530px;
+    top: 51px;
+    right: 1188px;
+    display: none;
+}
+
+.minijuegoBanyo {
+    position: absolute;
+    width: 213px;
+    height: 200px;
+    top: 51px;
+    right: 536px;
+    display: none;
+}
+
+.boton {
+    display: none;
+    position: absolute;
+    width: 65px;
+    height: 60px;
+}
+
+#btn0 {
+    top: 561px;
+    left: 832px;
+}
+
+#btn1 {
+    top: 337px;
+    left: 747px;
+}
+
+#btn2 {
+    top: 337px;
+    left: 832px;
+}
+
+#btn3 {
+    top: 337px;
+    left: 916px;
+}
+
+#btn4 {
+    top: 413px;
+    left: 748px;
+}
+
+#btn5 {
+    top: 413px;
+    left: 832px;
+}
+
+#btn6 {
+    top: 413px;
+    left: 916px;
+}
+
+#btn7 {
+    top: 489px;
+    left: 748px;
+}
+
+#btn8 {
+    top: 489px;
+    left: 832px;
+}
+
+#btn9 {
+    top: 489px;
+    left: 917px;
+}
+
+#enviar {
+    top: 561px;
+    left: 917px;
+    width: 149px;
+}
+
+#borrar {
+    top: 561px;
+    left: 748px;
+}
+
+#pantalla {
+    display: none;
+    position: absolute;
+    font-size: 50px;
+    top: 150px;
+    left: 740px;
+}
+
+#imagenNanoNumerin {
+    display: none;
+    position: absolute;
+    top: 335px;
+    left: 1000px;
+    width: 150px;
+}
+
+.volverBanyo {
+    position: absolute;
+    background-color: white;
+    padding: 10px;
+    font-size: 16px;
+    border: 3px solid gray;
+    border-radius: 15px;
+    left: 491px;
+    top: 100px;
+}
+
 /* .cocina {
    position: absolute;
   width: 57px;

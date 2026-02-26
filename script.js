@@ -60,6 +60,7 @@ function dentroCasa() {
 
 
 
+    document.getElementById("banyo").style.display = "block";
 }
 
 function salirCasa() {
@@ -92,6 +93,10 @@ function irCocina() {
         }
     }
     
+
+    document.getElementById("parrafo").innerHTML = "en la cocina"
+    document.getElementById("banyo").style.display = "none";
+
 }
 
 function volverSalon() {
@@ -112,6 +117,7 @@ function volverSalon() {
         }
     }
 
+    document.getElementById("banyo").style.display = "block";
 }
 
 let pasoBellingham = 0;
@@ -251,6 +257,7 @@ function irPatio() {
         }
     }
 
+    document.getElementById("banyo").style.display = "none";
 }
 
 function volverDentro() {
@@ -258,6 +265,7 @@ function volverDentro() {
     document.getElementById("gato").style.display = "block";
     document.getElementById("puertaExit").style.display = "block";
     document.getElementById("cocina").style.display = "block";
+    document.getElementById("banyo").style.display = "block";
     document.getElementById("volverDentro").style.display = "none";
     document.getElementById("minijuegoNano").style.display = "none";
     document.getElementById("patio").style.display = "block";
@@ -334,6 +342,8 @@ function avanzarNano() {
         pasarDialogo("Fernando Alonso: ", "darkgreen", "Toma, te has ganado esto por ser un tío tan listo");
     }
     else if (pasoNano == 12) {
+        let audio = document.getElementById("audioNano");
+        audio.play();
         document.getElementById("texto").style.fontWeight = "bold";
         document.getElementById("javi").src = "img/javiDinero.png";
         document.getElementById("monedaNano").src = "img/monedanano1.png";
@@ -390,4 +400,175 @@ function ganarMinijuegoNano() {
             avanzarNano();
         }
     }
+}
+
+function irBanyo() {
+    document.getElementById("escena").style.backgroundImage = "url(img/banyo.png)";
+    document.getElementById("puertaExit").style.display = "none";
+    document.getElementById("gato").style.display = "none";
+    document.getElementById("cocina").style.display = "none";
+    document.getElementById("banyo").style.display = "none";
+    document.getElementById("patio").style.display = "none";
+    document.getElementById("salirBanyo").style.display = "block";
+    document.getElementById("minijuegoBanyo").style.display = "block";
+}
+
+function salirBanyo() {
+    document.getElementById("escena").style.backgroundImage = "url(img/salon.png)";
+    document.getElementById("puertaExit").style.display = "block";
+    document.getElementById("gato").style.display = "block";
+    document.getElementById("cocina").style.display = "block";
+    document.getElementById("banyo").style.display = "block";
+    document.getElementById("patio").style.display = "block";
+    document.getElementById("salirBanyo").style.display = "none";
+    document.getElementById("minijuegoBanyo").style.display = "none";
+
+}
+
+let puedeJugarCajaFuerte = true;
+
+function minijuegoBanyo() {
+    if (puedeJugarCajaFuerte) {
+        crearKeypad();
+        document.getElementById("escena").style.backgroundImage = "url(img/keypad.png)";
+        document.getElementById("minijuegoBanyo").style.display = "none";
+        document.getElementById("salirBanyo").style.display = "none";
+    } else {
+        pasarDialogo("Pinto: ", "gray", "“La riqueza no consiste en tener grandes posesiones, sino en tener pocas necesidades.” — Epicteto");
+    }
+}
+
+function crearKeypad() {
+    const contenedor = document.getElementById("escena");
+    const pantalla = document.createElement("div");
+    pantalla.id = "pantalla";
+    pantalla.style.display = "block";
+    contenedor.appendChild(pantalla);
+
+    for (let i = 0; i <= 9; i++) {
+        let boton = document.createElement("div");
+        boton.className = "boton";
+        boton.id = "btn" + i;          
+
+        boton.onclick = function() {   
+            teclear(i);
+        };
+        boton.style.display = "block";
+        contenedor.appendChild(boton);
+    }
+
+    let borrar = document.createElement("div");
+    borrar.className = "boton borrar";
+    borrar.id = "borrar";
+    borrar.onclick = function() {
+        borrarPantalla();
+    };
+    borrar.style.display = "block";
+    contenedor.appendChild(borrar);
+
+    let enviar = document.createElement("div");
+    enviar.className = "boton enviar";
+    enviar.id = "enviar";
+    enviar.onclick = function() {
+        comprobarCodigo();
+    };
+    enviar.style.display = "block";
+    contenedor.appendChild(enviar);
+
+    // ARREGLAR BOTÓN, DA PROBLEMAS
+    let volverBanyo = document.createElement("div");
+    volverBanyo.id = "volverBanyo";
+    volverBanyo.className = "volverBanyo";
+    volverBanyo.innerText = "Volver al baño";
+    contenedor.appendChild(volverBanyo);
+    volverBanyo.onclick = function() {
+        document.getElementById("escena").style.backgroundImage = "url(img/banyo.png)";
+        document.getElementById("salirBanyo").style.display = "block";
+        document.getElementById("minijuegoBanyo").style.display = "block";
+        document.getElementById("pantalla").remove();
+        let botones = document.getElementsByClassName("boton");
+        for (let i = 0; i < botones.length; i++) {
+            botones[i].remove();
+            i--;
+        }
+        volverBanyo.style.display = "none";
+    }
+}
+
+function teclear(tecla) {
+    if (document.getElementById("pantalla").innerText == "INCORRECTO") {
+        document.getElementById("pantalla").innerText = "";
+    }
+    if (document.getElementById("pantalla").innerText.length < 3) {
+        document.getElementById("pantalla").innerText += tecla; 
+    }
+}
+
+function borrarPantalla() {
+    document.getElementById("pantalla").innerText = ""; 
+}
+
+function comprobarCodigo() {
+    let codigoCorrecto = 239;
+    let introducido = parseInt(document.getElementById("pantalla").innerText);
+    if (introducido == 333) {
+        let imagenNanoNumerin = document.createElement("img");
+        imagenNanoNumerin.style.display = "block";
+        imagenNanoNumerin.src = "img/numerin.png";
+        imagenNanoNumerin.className = "imagenNanoNumerin";
+        imagenNanoNumerin.id = "imagenNanoNumerin";
+        document.getElementById("escena").appendChild(imagenNanoNumerin);
+        document.getElementById("pantalla").innerText = "";
+    }
+    else if (introducido != codigoCorrecto) {
+        document.getElementById("pantalla").innerText = "INCORRECTO";
+    }
+    else if (introducido == codigoCorrecto) {
+        abrirCajaFuerte();
+    }
+}
+
+function abrirCajaFuerte() {
+    if (document.getElementById("imagenNanoNumerin") != null) {
+        document.getElementById("imagenNanoNumerin").style.display = "none";
+    }
+    let botones = document.getElementsByClassName("boton");
+    for (let i = 0; i < botones.length; i++) {
+        botones[i].style.display = "none";
+    }
+
+    document.getElementById("pantalla").style.display = "none";
+    document.getElementById("escena").backgroundImage = "url("
+
+    document.getElementById("texto").onclick = function() {
+        avanzarCajaFuerte();
+    }
+    document.getElementById("volverBanyo").remove();
+    avanzarCajaFuerte();
+}
+
+let pasoCajaFuerte = 0;
+
+function avanzarCajaFuerte() {
+    if (pasoCajaFuerte == 0) {
+        document.getElementById("javi").src = "img/javisorprendido.png";
+        pasarDialogo("Javier: ", "darkblue", "¡Pues sí que tiene dinero esta gente!");
+        document.getElementById("escena").style.backgroundImage = "url(img/cajaFuerteAbierta.png)";
+    } else if (pasoCajaFuerte == 1) {
+        document.getElementById("javi").src = "img/javi.png";
+        pasarDialogo("Javier: ", "darkblue", "Bueno, creo que voy a llevarme solo lo que necesito");
+    } else if (pasoCajaFuerte == 2) {
+        document.getElementById("texto").style.fontWeight = "bold";
+        document.getElementById("javi").src = "img/javiDinero.png";
+        dinero += 0.33;
+        actualizarDinero(dinero);
+        pasarDialogo("", "black", "Has obtenido 33 NanoCéntimos. Te quedan " + (1.00 - dinero).toFixed(2) + " para poder coger el autobús");
+    } else {
+        document.getElementById("javi").src = "img/javi.png";
+        document.getElementById("escena").style.backgroundImage = "url(img/banyo.png)";
+        document.getElementById("minijuegoBanyo").style.display = "block";
+        document.getElementById("salirBanyo").style.display = "block";
+        puedeJugarCajaFuerte = false;
+    }
+    pasoCajaFuerte++;
 }
