@@ -114,6 +114,7 @@ function irPatio() {
     document.getElementById("minijuegoNano").style.display = "block";
     document.getElementById("volverDentro").style.display = "block";
     document.getElementById("cocina").style.display = "none";
+    document.getElementById("banyo").style.display = "none";
 }
 
 function volverDentro() {
@@ -121,6 +122,7 @@ function volverDentro() {
     document.getElementById("gato").style.display = "block";
     document.getElementById("puertaExit").style.display = "block";
     document.getElementById("cocina").style.display = "block";
+    document.getElementById("banyo").style.display = "block";
     document.getElementById("volverDentro").style.display = "none";
     document.getElementById("minijuegoNano").style.display = "none";
     document.getElementById("patio").style.display = "block";
@@ -192,6 +194,8 @@ function avanzarNano() {
         pasarDialogo("Fernando Alonso: ", "darkgreen", "Toma, te has ganado esto por ser un tío tan listo");
     }
     else if (pasoNano == 12) {
+        let audio = document.getElementById("audioNano");
+        audio.play();
         document.getElementById("texto").style.fontWeight = "bold";
         document.getElementById("javi").src = "img/javiDinero.png";
         document.getElementById("monedaNano").src = "img/monedanano1.png";
