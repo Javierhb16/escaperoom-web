@@ -324,23 +324,23 @@ function crearKeypad() {
     contenedor.appendChild(enviar);
 
     // ARREGLAR BOTÓN, DA PROBLEMAS
-    // let volverBanyo = document.createElement("div");
-    // volverBanyo.id = "volverBanyo";
-    // volverBanyo.className = "volverBanyo";
-    // volverBanyo.innerText = "Volver al baño";
-    // contenedor.appendChild(volverBanyo);
-    // volverBanyo.onclick = function() {
-    //     document.getElementById("escena").style.backgroundImage = "url(img/banyo.png)";
-    //     document.getElementById("salirBanyo").style.display = "block";
-    //     document.getElementById("minijuegoBanyo").style.display = "block";
-    //     document.getElementById("pantalla").innerText = "";
-    //     document.getElementById("pantalla").style.display = "none";
-    //     let botones = document.getElementsByClassName("boton");
-    //     for (let i = 0; i < botones.length; i++) {
-    //         botones[i].style.display = "none";
-    //     }
-    //     volverBanyo.style.display = "none";
-    // }
+    let volverBanyo = document.createElement("div");
+    volverBanyo.id = "volverBanyo";
+    volverBanyo.className = "volverBanyo";
+    volverBanyo.innerText = "Volver al baño";
+    contenedor.appendChild(volverBanyo);
+    volverBanyo.onclick = function() {
+        document.getElementById("escena").style.backgroundImage = "url(img/banyo.png)";
+        document.getElementById("salirBanyo").style.display = "block";
+        document.getElementById("minijuegoBanyo").style.display = "block";
+        document.getElementById("pantalla").remove();
+        let botones = document.getElementsByClassName("boton");
+        for (let i = 0; i < botones.length; i++) {
+            botones[i].remove();
+            i--;
+        }
+        volverBanyo.style.display = "none";
+    }
 }
 
 function teclear(tecla) {
@@ -391,6 +391,7 @@ function abrirCajaFuerte() {
     document.getElementById("texto").onclick = function() {
         avanzarCajaFuerte();
     }
+    document.getElementById("volverBanyo").remove();
     avanzarCajaFuerte();
 }
 
