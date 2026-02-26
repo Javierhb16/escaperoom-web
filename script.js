@@ -75,7 +75,7 @@ function irCocina() {
     document.getElementById("cocina").style.display = "none";
 
     document.getElementById("parrafo").innerHTML = "en la cocina"
-
+    document.getElementById("banyo").style.display = "none";
 
 }
 
