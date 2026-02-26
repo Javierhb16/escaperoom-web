@@ -206,6 +206,8 @@ function avanzarBellingham() {
             pasarDialogo("Bellingham: ", "pink", "gracias guapeton, toma de regalo");
             pasoBellingham++;
         } else if (pasoBellingham == 7) {
+            let audio = document.getElementById("audioBellingham");
+            audio.play();
             document.getElementById("texto").style.fontWeight = "bold";
             document.getElementById("javi").src = "img/javiDinero.png";
             document.getElementById("monedaNano").src = "img/monedanano2.png";
