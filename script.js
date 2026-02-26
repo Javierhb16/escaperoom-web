@@ -16,6 +16,7 @@ function irCasa() {
     document.getElementById("puertaExit").style.display = "none";
     document.getElementById("patio").style.display = "block";
     document.getElementById("parrafo").innerText = "cuanta gente"
+    document.getElementById("patio").style.display = "none";
 
 }
 
@@ -27,7 +28,9 @@ function irParada() {
     document.getElementById("casa").style.display = "block";
     document.getElementById("bus").style.display = "block";
     document.getElementById("parrafo").innerText = "en la parada"
-
+    document.getElementById("patio").style.display = "none";
+    document.getElementById("patio").style.display = "none";
+    
 }
 
 
@@ -35,6 +38,8 @@ function irParada() {
 function bus() {
     if (dinero == 1) {
         document.getElementById("escena").style.backgroundImage = "url(img/viviendoenlacalle.png)";
+        document.getElementById("casa").style.display = "none";
+        document.getElementById("bus").style.display = "none";
         document.getElementById("parrafo").innerText = "en el autobus"
     } else {
         document.getElementById("parrafo").innerText = "pobre"
@@ -52,6 +57,7 @@ function dentroCasa() {
     document.getElementById("gato").style.display = "block";
     document.getElementById("parrafo").innerText = "estoy en el slon";
     document.getElementById("cocina").style.display = "block";
+    document.getElementById("patio").style.display = "block";
     if (!botellasApagadas) {
         if (document.getElementById("botella2") != null) {
             document.getElementById("botella2").style.display = "block";
@@ -70,8 +76,15 @@ function salirCasa() {
     document.getElementById("bobesponja").style.display = "block";
     document.getElementById("gato").style.display = "none";
     document.getElementById("puertaExit").style.display = "none";
-    document.getElementById("botella2").style.display = "none";
-
+    if (!botellasApagadas) {
+        if (document.getElementById("botella2") != null) {
+            document.getElementById("botella2").style.display = "none";
+        }
+    }
+    document.getElementById("banyo").style.display = "none";
+    document.getElementById("patio").style.display = "none";
+    document.getElementById("cocina").style.display = "none";
+    
     document.getElementById("parrafo").innerText = "cuanta gente";
 
 }
@@ -486,12 +499,16 @@ function crearKeypad() {
         document.getElementById("salirBanyo").style.display = "block";
         document.getElementById("minijuegoBanyo").style.display = "block";
         document.getElementById("pantalla").remove();
+
         let botones = document.getElementsByClassName("boton");
         for (let i = 0; i < botones.length; i++) {
             botones[i].remove();
             i--;
         }
-        volverBanyo.style.display = "none";
+        if (document.getElementById("imagenNanoNumerin") != null) {
+            document.getElementById("imagenNanoNumerin").remove();
+        }
+        volverBanyo.remove();
     }
 }
 
