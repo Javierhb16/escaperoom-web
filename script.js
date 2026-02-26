@@ -42,6 +42,7 @@ function bus() {
 }
 
 function dentroCasa() {
+
     document.getElementById("escena").style.backgroundImage = "url(img/salon.png)";
     document.getElementById("parada").style.display = "none";
     document.getElementById("dentroCasa").style.display = "none";
@@ -51,9 +52,14 @@ function dentroCasa() {
     document.getElementById("gato").style.display = "block";
     document.getElementById("parrafo").innerText = "estoy en el slon";
     document.getElementById("cocina").style.display = "block";
+
+
 }
 
 function salirCasa() {
+
+    ocultarBotellas();
+
     document.getElementById("escena").style.backgroundImage = "url(img/casa.png)";
     document.getElementById("dentroCasa").style.display = "block";
     document.getElementById("parada").style.display = "block";
@@ -62,7 +68,6 @@ function salirCasa() {
     document.getElementById("puertaExit").style.display = "none";
 
     document.getElementById("parrafo").innerText = "cuanta gente"
-
 }
 
 function irCocina() {
@@ -70,16 +75,23 @@ function irCocina() {
     document.getElementById("gato").style.display = "none";
     document.getElementById("puertaExit").style.display = "none";
     document.getElementById("volverSalon").style.display = "block";
-    document.getElementById("minijuegoBellingham").style.display = "block";
+    if (botellasApagadas) {
+        document.getElementById("botella1").style.display = "none";
+    } else {
+        document.getElementById("botella1").style.display = "block";
+    }
+    if (puedeJugarBellingham) {
+        document.getElementById("minijuegoBellingham").style.display = "block";
+    } else { document.getElementById("minijuegoBellingham").style.display = "none"; }
     document.getElementById("patio").style.display = "none";
     document.getElementById("cocina").style.display = "none";
-
-    document.getElementById("parrafo").innerHTML = "en la cocina"
 
 
 }
 
 function volverSalon() {
+
+
     document.getElementById("escena").style.backgroundImage = "url(img/salon.png)";
     document.getElementById("gato").style.display = "block";
     document.getElementById("puertaExit").style.display = "block";
@@ -87,84 +99,100 @@ function volverSalon() {
     document.getElementById("minijuegoBellingham").style.display = "none";
     document.getElementById("volverSalon").style.display = "none";
     document.getElementById("patio").style.display = "block";
+
 }
 
 let pasoBellingham = 0;
 let puedeJugarBellingham = true;
-let hablarSegundaVez = false;
-let botellas = 3;
+let segundaConverBellingham = false;
+let botellasApagadas = true;
+let botellasObtenidas = 0;
 
 function minijuegoBellingham() {
-    if (puedeJugarBellingham == true && hablarSegundaVez == false) {
+    if (segundaConverBellingham) {
+        if (botellasObtenidas == 0) {
+            pasarDialogo("Pinto: ", "darkblue", "Todavia te quedan " + (3 - botellasObtenidas) + " botellas por conseguir");
+        } else if (botellasObtenidas == 1) {
+            pasarDialogo("Pinto: ", "darkblue", "Todavia te quedan " + (3 - botellasObtenidas) + " botellas por conseguir");
+        } else if (botellasObtenidas == 2) {
+            pasarDialogo("Pinto: ", "darkblue", "Todavia te quedan " + (3 - botellasObtenidas) + " botellas por conseguir");
+        }
+    } else if (puedeJugarBellingham) {
         document.getElementById("escena").style.backgroundImage = "url(img/bellinghamDifuminado.png)";
         document.getElementById("minijuegoBellingham").style.display = "none";
         document.getElementById("volverSalon").style.display = "none";
+        document.getElementById("patio").style.display = "none";
         pasoBellingham = 0;
         document.getElementById("texto").onclick = avanzarBellingham;
         avanzarBellingham();
-        puedeJugarBellingham = false;
-        hablarSegundaVez = true
-    } else if (puedeJugarBellingham == false && hablarSegundaVez == true) {
-        if (botellas == 0) {
-            document.getElementById("parrafo").innerText = "Te faltan 3 botellas"
-        } else if (botellas == 1) {
-            document.getElementById("parrafo").innerText = "Te faltan 2 botellas"
-        } else if (botellas == 2) {
-            document.getElementById("parrafo").innerText = "Te falta 1 botella"
-        } else if (botellas == 3) {
-            hablarSegundaVez = false;
-            
-        }
-    } else if (puedeJugarBellingham == false && hablarSegundaVez == false) {
-        document.getElementById("escena").style.backgroundImage = "url(img/bellinghamDifuminado.png)";
-        document.getElementById("texto").onclick = avanzarBellingham2;
-        avanzarBellingham2();
+    } else {
+        pasarDialogo("Pinto: ", "gray", "Deja a bellingham borracho");
     }
 }
+
+
+function spawnBotellas() {
+    document.getElementById("escena").style.backgroundImage = "url(img/cocina.png)";
+    botellasApagadas = false;
+    segundaConverBellingham = true;
+    irCocina();
+}
+
+
 
 function avanzarBellingham() {
-    if (pasoBellingham == 0) {
-        pasarDialogo("Javier: ", "darkblue", "Hola bellingham");
-    } else if (pasoBellingham == 1) {
-        pasarDialogo("Bellingham: ", "pink", "Houla amigou como estás, yo bien contentou");
-    } else if (pasoBellingham == 2) {
-        pasarDialogo("Javier: ", "darkblue", "Ya veo ya. Por algun casual no me podrias prestar diero?");
-    } else if (pasoBellingham == 3) {
-        pasarDialogo("Bellingham: ", "pink", "Clarou amigou, si me consuigues 3 botellas de jugo de la felicidad te presto dinero");
-    } else if (pasoBellingham == 4) {
-        pasarDialogo("Javier: ", "darkblue", "Ahora te los traigo");
+
+    if (botellasObtenidas == 0 && segundaConverBellingham == false) {
+        if (pasoBellingham == 0) {
+            pasarDialogo("Javier: ", "darkblue", "Hombre Bellingham que pasa");
+            pasoBellingham++;
+        } else if (pasoBellingham == 1) {
+            pasarDialogo("Bellingham: ", "pink", "Que pasa amigooouuuu");
+            pasoBellingham++;
+        } else if (pasoBellingham == 2) {
+            pasarDialogo("Javier: ", "darkblue", "me puedes dejar algo de pasta?");
+            pasoBellingham++;
+        } else if (pasoBellingham == 3) {
+            pasarDialogo("Bellingham: ", "pink", "Claro amigoouuuu, pero consigueme 3 bobtellas de jugo de la felicidad, que seguro que estan repartidas por la casa");
+            pasoBellingham++;
+        } else if (pasoBellingham == 4) {
+            pasarDialogo("Javier: ", "darkblue", "yo te las traigo");
+            pasoBellingham++;
+            document.getElementById("texto").onclick = null;
+            spawnBotellas();
+
+        }
+
     } else {
-        document.getElementById("texto").onclick = null;
-        irCocina();
-        document.getElementById("texto").style.fontWeight = "normal";
+        if (pasoBellingham == 5) {
+            pasarDialogo("Javier: ", "darkblue", "Aqui las tienes");
+            pasoBellingham++;
+        } else if (pasoBellingham == 6) {
+            pasarDialogo("Bellingham: ", "pink", "gracias guapeton, toma de regalo");
+            pasoBellingham++;
+        } else if (pasoBellingham == 7) {
+            document.getElementById("texto").style.fontWeight = "bold";
+            document.getElementById("javi").src = "img/javiDinero.png";
+            document.getElementById("monedaNano").src = "img/monedanano2.png";
+            dinero += 0.33;
+            actualizarDinero(dinero);
+            pasarDialogo("", "black", "Has obtenido 33 NanoCéntimos. Te quedan " + (1.00 - dinero).toFixed(2) + " para poder coger el autobús");
+            pasoBellingham++;
+        } else {
+            document.getElementById("texto").onclick = null; // Terminar diálogo
+            // Finalizar el minijuego y volver a la escena anterior
+            irCocina();
+            document.getElementById("javi").src = "img/javi.png";
+            // Quitarle la posibilidad al jugador de que vuelva a jugar el minijuego
+            puedeJugarBellingham = false;
+            // Cambiar las letras del úlitmo diálogo a su estado normal
+            document.getElementById("texto").style.fontWeight = "normal";
+            document.getElementById("monedaNano2").src = "";
+        }
     }
-    pasoBellingham++;
 }
 
-let pasoBellingham2 = 0;
-function avanzarBellingham2() {
-    if (pasoBellingham == 0) {
-        pasarDialogo("Javier: ", "darkblue", "Ya te las he traido");
-    } else if (pasoBellingham == 1) {
-        pasarDialogo("Bellingham: ", "pink", "grasias amigou");
-    } else if (pasoBellingham == 2) {
-        document.getElementById("texto").style.fontWeight = "bold";
-        document.getElementById("javi").src = "img/javiDinero.png";
-        document.getElementById("monedaNano").src = "img/monedanano2.png";
-        dinero += 0.33;
-        actualizarDinero(dinero);
-        pasarDialogo("", "black", "Has obtenido 33 NanoCéntimos. Te quedan " + (1.00 - dinero).toFixed(2) + " para poder coger el autobús");
-    } else {
-        document.getElementById("texto").onclick = null;
-        irCocina();
-        document.getElementById("texto").style.fontWeight = "normal";
-        document.getElementById("javi").src = "img/javi.png";
-        document.getElementById("texto").style.fontWeight = "normal";
-        document.getElementById("monedaNano").src = ""
-    }
-    pasoBellingham2++;
 
-}
 
 function sonidoBob() {
     var audio = document.getElementById("miAudioBob");

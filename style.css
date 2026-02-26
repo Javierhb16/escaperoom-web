@@ -142,6 +142,52 @@ body {
     display: none;
 }
 
+.botella1,
+.botella2,
+.botella3 {
+    position: absolute;
+    width: 60px;
+    display: none;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.botella1:hover,
+.botella2:hover,
+.botella3:hover {
+    transform: scale(1.1);
+}
+
+/* Cocina */
+.botella1 {
+    background-image: url(img/botella.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 450px;
+    left: 900px;
+}
+
+/* Salón */
+.botella2 {
+    background-image: url(img/botella.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 520px;
+    left: 600px;
+}
+
+/* Patio */
+.botella3 {
+    background-image: url(img/botella.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 500px;
+    left: 1100px;
+}
+
 .bobesponja {
     background-image: url(img/bobesponja.png);
     background-size: contain;
@@ -198,6 +244,8 @@ body {
     top: 120px;
     width: 600px;
 }
+
+
 
 .ecuaciones {
     display: none;
