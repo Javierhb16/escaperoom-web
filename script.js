@@ -52,45 +52,49 @@ function dentroCasa() {
     document.getElementById("gato").style.display = "block";
     document.getElementById("parrafo").innerText = "estoy en el slon";
     document.getElementById("cocina").style.display = "block";
+    if (!botellasApagadas) {
+        if (document.getElementById("botella2") != null) {
+            document.getElementById("botella2").style.display = "block";
+        }
+    }
+
 
 
 }
 
 function salirCasa() {
-
-    ocultarBotellas();
-
     document.getElementById("escena").style.backgroundImage = "url(img/casa.png)";
     document.getElementById("dentroCasa").style.display = "block";
     document.getElementById("parada").style.display = "block";
     document.getElementById("bobesponja").style.display = "block";
     document.getElementById("gato").style.display = "none";
     document.getElementById("puertaExit").style.display = "none";
+    document.getElementById("botella2").style.display = "none";
 
-    document.getElementById("parrafo").innerText = "cuanta gente"
+    document.getElementById("parrafo").innerText = "cuanta gente";
+
 }
 
 function irCocina() {
     document.getElementById("escena").style.backgroundImage = "url(img/cocina.png)";
     document.getElementById("gato").style.display = "none";
+    document.getElementById("minijuegoBellingham").style.display = "block";
     document.getElementById("puertaExit").style.display = "none";
     document.getElementById("volverSalon").style.display = "block";
-    if (botellasApagadas) {
-        document.getElementById("botella1").style.display = "none";
-    } else {
-        document.getElementById("botella1").style.display = "block";
-    }
-    if (puedeJugarBellingham) {
-        document.getElementById("minijuegoBellingham").style.display = "block";
-    } else { document.getElementById("minijuegoBellingham").style.display = "none"; }
     document.getElementById("patio").style.display = "none";
     document.getElementById("cocina").style.display = "none";
-
-
+    if (!botellasApagadas) {
+        if (document.getElementById("botella1") != null) {
+            document.getElementById("botella1").style.display = "block";
+        }
+        if (document.getElementById("botella2") != null) {
+            document.getElementById("botella2").style.display = "none";
+        }
+    }
+    
 }
 
 function volverSalon() {
-
 
     document.getElementById("escena").style.backgroundImage = "url(img/salon.png)";
     document.getElementById("gato").style.display = "block";
@@ -99,6 +103,14 @@ function volverSalon() {
     document.getElementById("minijuegoBellingham").style.display = "none";
     document.getElementById("volverSalon").style.display = "none";
     document.getElementById("patio").style.display = "block";
+    if (!botellasApagadas) {
+        if (document.getElementById("botella2") != null) {
+            document.getElementById("botella2").style.display = "block";
+        }
+        if (document.getElementById("botella1") != null) {
+            document.getElementById("botella1").style.display = "none";
+        }
+    }
 
 }
 
@@ -116,6 +128,9 @@ function minijuegoBellingham() {
             pasarDialogo("Pinto: ", "darkblue", "Todavia te quedan " + (3 - botellasObtenidas) + " botellas por conseguir");
         } else if (botellasObtenidas == 2) {
             pasarDialogo("Pinto: ", "darkblue", "Todavia te quedan " + (3 - botellasObtenidas) + " botellas por conseguir");
+        } else if (botellasObtenidas == 3) {
+            document.getElementById("texto").onclick = avanzarBellingham;
+            avanzarBellingham();
         }
     } else if (puedeJugarBellingham) {
         document.getElementById("escena").style.backgroundImage = "url(img/bellinghamDifuminado.png)";
@@ -136,6 +151,21 @@ function spawnBotellas() {
     botellasApagadas = false;
     segundaConverBellingham = true;
     irCocina();
+}
+
+function cogerBotella1() {
+    document.getElementById("botella1").remove();
+    botellasObtenidas++;
+}
+
+function cogerBotella2() {
+    document.getElementById("botella2").remove();
+    botellasObtenidas++;
+}
+
+function cogerBotella3() {
+    document.getElementById("botella3").remove();
+    botellasObtenidas++;
 }
 
 
@@ -160,7 +190,6 @@ function avanzarBellingham() {
             pasoBellingham++;
             document.getElementById("texto").onclick = null;
             spawnBotellas();
-
         }
 
     } else {
@@ -178,7 +207,9 @@ function avanzarBellingham() {
             actualizarDinero(dinero);
             pasarDialogo("", "black", "Has obtenido 33 NanoCéntimos. Te quedan " + (1.00 - dinero).toFixed(2) + " para poder coger el autobús");
             pasoBellingham++;
-        } else {
+            segundaConverBellingham = false
+        }
+        else {
             document.getElementById("texto").onclick = null; // Terminar diálogo
             // Finalizar el minijuego y volver a la escena anterior
             irCocina();
@@ -187,7 +218,7 @@ function avanzarBellingham() {
             puedeJugarBellingham = false;
             // Cambiar las letras del úlitmo diálogo a su estado normal
             document.getElementById("texto").style.fontWeight = "normal";
-            document.getElementById("monedaNano2").src = "";
+            document.getElementById("monedaNano").src = "";
         }
     }
 }
@@ -211,6 +242,15 @@ function irPatio() {
     document.getElementById("minijuegoNano").style.display = "block";
     document.getElementById("volverDentro").style.display = "block";
     document.getElementById("cocina").style.display = "none";
+    if (!botellasApagadas) {
+        if (document.getElementById("botella3") != null) {
+            document.getElementById("botella3").style.display = "block";
+        }
+        if (document.getElementById("botella2") != null) {
+            document.getElementById("botella2").style.display = "none";
+        }
+    }
+
 }
 
 function volverDentro() {
@@ -221,7 +261,12 @@ function volverDentro() {
     document.getElementById("volverDentro").style.display = "none";
     document.getElementById("minijuegoNano").style.display = "none";
     document.getElementById("patio").style.display = "block";
+    if (!botellasApagadas) {
+        if (document.getElementById("botella2") != null) {
+            document.getElementById("botella2").style.display = "block";
+        }
 
+    }
 }
 
 function pasarDialogo(textContentHabla, styleColor, textContentParrafo) {
