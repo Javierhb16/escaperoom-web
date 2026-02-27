@@ -1,6 +1,6 @@
 let tiempoInicio;
 let tiempoFinalMs;
-let dinero = 0.01
+let dinero = 1
 
 
 
@@ -62,11 +62,12 @@ function irParada() {
 
 function bus() {
     if (dinero == 1) {
-        document.getElementById("escena").style.backgroundImage = "url(img/viviendoenlacalle.png)";
+        document.getElementById("escena").style.backgroundImage = "url(img/lobato.png)";
         document.getElementById("casa").style.display = "none";
         document.getElementById("bus").style.display = "none";
-        document.getElementById("texto").onclick = avanzarCalle;
-        avanzarCalle();
+        tiempoFinalMs = calcularTiempoFinal();
+        document.getElementById("texto").onclick = avanzarLobato;
+        avanzarLobato();
     } else {
         pasarDialogo("Pinto: ", "cadetblue", "Todavía te falta " + (1.00 - dinero).toFixed(2) + "€ para poder coger el autobús");
     }
@@ -85,24 +86,39 @@ function calcularTiempoFinal() {
     }
 }
 
-let pasoCalle = 0;
 
-function avanzarCalle() {
-    if (pasoCalle == 0) {
-        // Calculamos el tiempo justo ahora que termina el reto
-        tiempoFinalMs = calcularTiempoFinal();
+let pasoLobato = 0;
 
-        pasarDialogo("Viviendo en la Calle: ", "orange", "¡Ese Javi! Te he visto hablando con el Nano... ¿te ha dado la chapa con la 33?");
+function avanzarLobato() {
+    
+    if (pasoLobato == 0) {
+        pasarDialogo("Lobato: ", "orange", "¡Que pasa Javi! Vaya fiesta te has pegado");
     }
-    else if (pasoCalle == 1) {
-        pasarDialogo("Javier: ", "darkblue", "Casi me convence de que su coche es una tostadora, pero al menos me ha dado para el bus.");
+    else if (pasoLobato == 1) {
+        pasarDialogo("Javier: ", "darkblue", "¿Antono Lobato? Me puedes decir cuanto val...");
     }
-    else if (pasoCalle == 2) {
-        // Aquí el personaje te da tu marca de tiempo
-        pasarDialogo("Viviendo en la Calle: ", "orange", "Oye, pues no vas nada mal de tiempo. Te has pasado el juego en " + tiempoFinalMs + ".");
+    else if (pasoLobato == 2) {
+        document.getElementById("escena").style.backgroundImage = "url(img/lobatoEnfadado.png)";
+        pasarDialogo("Lobato: ", "orange", "¡NO @#!#@ NO TE VOY A DECIR CUANTO VALE TU COCHE!");
     }
-    else if (pasoCalle == 3) {
-        pasarDialogo("Viviendo en la Calle: ", "orange", "A ese ritmo llegas a la parada antes de que Fernando encuentre el botón de DRS. ¡Nos vemos, figura!");
+    else if (pasoLobato == 3) {
+        pasarDialogo("Javier: ", "darkblue", "Vale vale, perdón.");
+    }
+    else if (pasoLobato == 4) {
+        document.getElementById("escena").style.backgroundImage = "url(img/lobato.png)";
+        pasarDialogo("Lobato: ", "orange", "No perdoname a mi no tendria que haberte gritado");
+        
+    }
+    else if (pasoLobato == 5) {
+        pasarDialogo("Lobato: ", "orange", "Mira por ser tú hoy te llevo gratis a casa. ¡Venga sube!");
+    }
+    else if (pasoLobato == 6) {
+        pasarDialogo("Javier: ", "darkblue", "Al final tanto esfuerzo para nada, pero bueno bien está lo que bien acaba.");
+    }
+    else if (pasoLobato == 7) {
+        
+        pasarDialogo("Pinto: ", "cadetblue", "¡Has terminado el juego! Y solo te ha llevado " + tiempoFinalMs + ".");
+        
     }
     else {
         // Final del juego o vuelta al menú
@@ -110,7 +126,8 @@ function avanzarCalle() {
         alert("¡Juego completado en " + tiempoFinalMs + "!");
         location.reload(); // Reinicia el juego
     }
-    pasoCalle++;
+    pasoLobato++;
+
 }
 
 function dentroCasa() {
@@ -166,7 +183,7 @@ function irCocina() {
     document.getElementById("volverSalon").style.display = "block";
     document.getElementById("patio").style.display = "none";
     document.getElementById("cocina").style.display = "none";
-    
+
     if (!botellasApagadas) {
         if (document.getElementById("botella1") != null) {
             document.getElementById("botella1").style.display = "block";
@@ -179,7 +196,7 @@ function irCocina() {
     }
 
     document.getElementById("parrafo").innerText = "Hombre si es bellingham."
-    
+
     document.getElementById("banyo").style.display = "none";
 
 }
@@ -629,7 +646,7 @@ function crearKeypad() {
         huella.style.display = "block";
         contenedor.appendChild(huella);
     }
-    
+
     // Crear botón para volver al baño
     let volverBanyo = document.createElement("div");
     volverBanyo.id = "volverBanyo";
@@ -649,7 +666,7 @@ function crearKeypad() {
             i--;
         }
         let huellas = document.getElementsByClassName("huella");
-        for (let i = 0; i < huellas.length; i++) {
+        for (let i = 0; i < huellas.length; i++) {
             huellas[i].remove();
             i--;
         }
@@ -706,7 +723,7 @@ function abrirCajaFuerte() {
         huellas[i].style.display = "none";
     }
     document.getElementById("pantalla").style.display = "none";
-    
+
     document.getElementById("texto").onclick = function () {
         avanzarCajaFuerte();
     }
