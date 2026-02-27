@@ -366,6 +366,7 @@ body {
     position: absolute;
     width: 65px;
     height: 60px;
+    z-index: 5;
 }
 
 #btn0 {
@@ -454,6 +455,41 @@ body {
     border-radius: 15px;
     left: 491px;
     top: 100px;
+}
+
+.huella {
+    display: none;
+    background-image: url(img/huella.png);
+    background-size: 80px;
+    background-repeat: no-repeat;
+    position: absolute;
+    height: 80px;
+    width: 80px;
+    opacity: 65%;  
+    z-index: 1;
+}
+
+#huella1 {
+    top: 353px;
+    left: 826px;
+}
+
+#huella2 {
+    top: 353px;
+    left: 910px;
+}
+
+#huella3 {
+    top: 500px;
+    left: 910px;
+}
+
+#destello {
+    display: none;
+    position: absolute;
+    background-image: url(img/destello.gif);
+    width: 1200px;
+    height: 700px;
 }
 
 /* .cocina {
