@@ -1,6 +1,6 @@
 let tiempoInicio;
 let tiempoFinalMs;
-let dinero = 1
+let dinero = 0.01;
 
 
 
@@ -38,7 +38,7 @@ function irCasa() {
     document.getElementById("bus").style.display = "none";
     document.getElementById("puertaExit").style.display = "none";
     document.getElementById("patio").style.display = "block";
-    document.getElementById("parrafo").innerText = "¿Ese es Peter Griffin? Parece que se ha dado un buen golpe. Espera un momento, \n ¿qué hace Bob Esponja volando y tocando un solo de guitarra? Parece que ninguno de los dos puede ayudarnos."
+    pasarDialogo("Pinto: ", "cadetblue", "¿Ese es Peter Griffin? Parece que se ha dado un buen golpe. Espera un momento, \n ¿qué hace Bob Esponja volando y tocando un solo de guitarra? Parece que ninguno de los dos puede ayudarnos.");
     document.getElementById("patio").style.display = "none";
 
 }
@@ -52,7 +52,7 @@ function irParada() {
     document.getElementById("casa").style.display = "block";
     document.getElementById("bus").style.display = "block";
     document.getElementById("batman").style.display = "block";
-    document.getElementById("parrafo").innerText = "Parece que alguien se ha pasado bebiendo Jugo de la Felicidad..."
+    document.getElementById("parrafo").innerText = "Parece que alguien se ha pasado con Jugo de la Felicidad..."
     document.getElementById("patio").style.display = "none";
     document.getElementById("patio").style.display = "none";
 
@@ -69,7 +69,7 @@ function bus() {
         document.getElementById("texto").onclick = avanzarLobato;
         avanzarLobato();
     } else {
-        pasarDialogo("Pinto: ", "cadetblue", "Todavía te falta " + (1.00 - dinero).toFixed(2) + "€ para poder coger el autobús");
+        pasarDialogo("Pinto: ", "cadetblue", "Todavía te faltan " + (1.00 - dinero).toFixed(2) + "€ para poder coger el autobús");
     }
 }
 
@@ -92,36 +92,35 @@ let pasoLobato = 0;
 function avanzarLobato() {
     
     if (pasoLobato == 0) {
-        pasarDialogo("Lobato: ", "orange", "¡Que pasa Javi! Vaya fiesta te has pegado");
+        pasarDialogo("Lobato: ", "orange", "¡Qué pasa Javi! ¡Vaya fiesta te has pegado!");
     }
     else if (pasoLobato == 1) {
-        pasarDialogo("Javier: ", "darkblue", "¿Antono Lobato? Me puedes decir cuanto val...");
+        pasarDialogo("Javier: ", "darkblue", "¿Antonio Lobato? ¿Me puedes decir cuanto vale mi co...?");
     }
     else if (pasoLobato == 2) {
         document.getElementById("escena").style.backgroundImage = "url(img/lobatoEnfadado.png)";
-        pasarDialogo("Lobato: ", "orange", "¡NO @#!#@ NO TE VOY A DECIR CUANTO VALE TU COCHE!");
+        pasarDialogo("Lobato: ", "orange", "¡NO S@#%#@$! ¡NO TE VOY A DECIR CUANTO VALE TU COCHE!");
     }
     else if (pasoLobato == 3) {
+        document.getElementById("javi").src = "img/javiDecepcionado.png";
         pasarDialogo("Javier: ", "darkblue", "Vale vale, perdón.");
     }
     else if (pasoLobato == 4) {
         document.getElementById("escena").style.backgroundImage = "url(img/lobato.png)";
-        pasarDialogo("Lobato: ", "orange", "No perdoname a mi no tendria que haberte gritado");
+        pasarDialogo("Lobato: ", "orange", "No, perdóname a mi, no debería haberte gritado");
         
     }
     else if (pasoLobato == 5) {
-        pasarDialogo("Lobato: ", "orange", "Mira por ser tú hoy te llevo gratis a casa. ¡Venga sube!");
+        pasarDialogo("Lobato: ", "orange", "Mira, por ser tú te llevo gratis a casa. ¡Venga, sube!");
     }
     else if (pasoLobato == 6) {
-        pasarDialogo("Javier: ", "darkblue", "Al final tanto esfuerzo para nada, pero bueno bien está lo que bien acaba.");
+        document.getElementById("javi").src = "img/javi.png";
+        pasarDialogo("Javier: ", "darkblue", "Bueno, al final tanto esfuerzo para nada, pero como decía mi abuelo: “Bien está lo que bien acaba”");
     }
     else if (pasoLobato == 7) {
-        
         pasarDialogo("Pinto: ", "cadetblue", "¡Has terminado el juego! Y solo te ha llevado " + tiempoFinalMs + ".");
-        
     }
     else {
-        // Final del juego o vuelta al menú
         document.getElementById("texto").onclick = null;
         alert("¡Juego completado en " + tiempoFinalMs + "!");
         location.reload(); // Reinicia el juego
@@ -140,7 +139,7 @@ function dentroCasa() {
     document.getElementById("cocina").style.display = "block";
     document.getElementById("bobesponja").style.display = "none";
     document.getElementById("gato").style.display = "block";
-    document.getElementById("parrafo").innerText = "estoy en el slon";
+    pasarDialogo("Pinto: ", "cadetblue", "Si yo hubiera montado esta fiesta todo sería más divertido...");
     document.getElementById("cocina").style.display = "block";
     document.getElementById("patio").style.display = "block";
     if (!botellasApagadas) {
@@ -171,7 +170,7 @@ function salirCasa() {
     document.getElementById("patio").style.display = "none";
     document.getElementById("cocina").style.display = "none";
 
-    document.getElementById("parrafo").innerText = "cuanta gente";
+    pasarDialogo("Pinto: ", "cadetblue", "¿Ese es Peter Griffin? Parece que se ha dado un buen golpe. Espera un momento, \n ¿qué hace Bob Esponja volando y tocando un solo de guitarra? Parece que ninguno de los dos puede ayudarnos.");
 
 }
 
@@ -185,17 +184,17 @@ function irCocina() {
     document.getElementById("cocina").style.display = "none";
 
     if (!botellasApagadas) {
+        pasarDialogo("Pinto: ", "cadetblue", "Traele las tres botellas de Jugo de la Felicidad a Bellingham");
+
         if (document.getElementById("botella1") != null) {
             document.getElementById("botella1").style.display = "block";
-
         }
         if (document.getElementById("botella2") != null) {
             document.getElementById("botella2").style.display = "none";
-
         }
+    } else {
+        pasarDialogo("Pinto: ", "cadetblue", "¿Qué hace aquí Bellingham?");
     }
-
-    document.getElementById("parrafo").innerText = "Hombre si es bellingham."
 
     document.getElementById("banyo").style.display = "none";
 
@@ -218,7 +217,7 @@ function volverSalon() {
             document.getElementById("botella1").style.display = "none";
         }
     }
-
+    pasarDialogo("Pinto: ", "cadetblue", "Si yo hubiera montado esta fiesta todo sería más divertido...");
     document.getElementById("banyo").style.display = "block";
 }
 
@@ -249,7 +248,7 @@ function minijuegoBellingham() {
         document.getElementById("texto").onclick = avanzarBellingham;
         avanzarBellingham();
     } else {
-        pasarDialogo("Pinto: ", "cadetblue", "Deja a bellingham borracho");
+        pasarDialogo("Pinto: ", "cadetblue", "Ahora Bellingham rebosa felicidad");
     }
 }
 
@@ -282,37 +281,30 @@ function avanzarBellingham() {
 
     if (botellasObtenidas == 0 && segundaConverBellingham == false) {
         if (pasoBellingham == 0) {
-            pasarDialogo("Javier: ", "darkblue", "Hombre Bellingham que pasa");
-            pasoBellingham++;
+            pasarDialogo("Javier: ", "darkblue", "¿Bellingham? ¿Pero tú no tenías partido hoy?");
         } else if (pasoBellingham == 1) {
-            pasarDialogo("Bellingham: ", "pink", "Que pasa amigooouuuu");
-            pasoBellingham++;
+            pasarDialogo("Bellingham: ", "darkorchid", "Yes my friendo, pero me he routo the meniscou. For me hoy es día libre");
         } else if (pasoBellingham == 2) {
-            pasarDialogo("Javier: ", "darkblue", "me puedes dejar algo de pasta?");
-            pasoBellingham++;
+            pasarDialogo("Javier: ", "darkblue", "Bueno, si tú lo dices... Oye, ¿por casualidad no me podrás prestar algo de dinero?");
         } else if (pasoBellingham == 3) {
-            pasarDialogo("Bellingham: ", "pink", "Claro amigoouuuu, pero consigueme 3 bobtellas de jugo de la felicidad, que seguro que estan repartidas por la casa");
-            pasoBellingham++;
+            pasarDialogo("Bellingham: ", "darkorchid", "Solo tengou esta moneda. Te la puedou dar if me traes three boteyias de Jugou de la Felicidad");
         } else if (pasoBellingham == 4) {
-            pasarDialogo("Javier: ", "darkblue", "yo te las traigo");
-            pasoBellingham++;
+            pasarDialogo("Javier: ", "darkblue", "Me parece bien, voy a buscarlas");
+        } else if (pasoBellingham == 5) {
             document.getElementById("texto").onclick = null;
             document.getElementById("objetivo").innerText = "-Objetivo actual: \n Conseguir las botellas a Bellingham";
             spawnBotellas();
-
         }
 
     } else {
         document.getElementById("escena").style.backgroundImage = "url(img/bellinghamDifuminado.png)";
         document.getElementById("minijuegoBellingham").style.display = "none";
         document.getElementById("volverSalon").style.display = "none";
-        if (pasoBellingham == 5) {
-            pasarDialogo("Javier: ", "darkblue", "Aqui las tienes");
-            pasoBellingham++;
-        } else if (pasoBellingham == 6) {
-            pasarDialogo("Bellingham: ", "pink", "gracias guapeton, toma de regalo");
-            pasoBellingham++;
+        if (pasoBellingham == 6) {
+            pasarDialogo("Javier: ", "darkblue", "He vuelto Bellingham. Aquí tienes las tres");
         } else if (pasoBellingham == 7) {
+            pasarDialogo("Bellingham: ", "darkorchid", "Grasias amigou, lo prometidou es deuda. Aquí la tienes");
+        } else if (pasoBellingham == 8) {
             let audio = document.getElementById("audioBellingham");
             audio.play();
             document.getElementById("texto").style.fontWeight = "bold";
@@ -322,7 +314,6 @@ function avanzarBellingham() {
             actualizarDinero(dinero);
             document.getElementById("destello").style.display = "block";
             pasarDialogo("", "black", "Has obtenido 33 NanoCéntimos. Te quedan " + (1.00 - dinero).toFixed(2) + " para poder coger el autobús");
-            pasoBellingham++;
             segundaConverBellingham = false
         }
         else {
@@ -335,6 +326,7 @@ function avanzarBellingham() {
                 document.getElementById("objetivo").innerText = "-Objetivo actual: \n Ayudar a Javi a conseguir el dinero que le falta";
             }
             document.getElementById("destello").style.display = "none";
+            botellasApagadas = true;
             irCocina();
             document.getElementById("javi").src = "img/javi.png";
             // Quitarle la posibilidad al jugador de que vuelva a jugar el minijuego
@@ -344,6 +336,8 @@ function avanzarBellingham() {
             document.getElementById("monedaNano").src = "";
         }
     }
+    pasoBellingham++;
+
 }
 
 
@@ -394,7 +388,7 @@ function irPatio() {
             document.getElementById("botella2").style.display = "none";
         }
     }
-
+    pasarDialogo("Pinto: ", "cadetblue", "¿Quíén está más caliente: la barbacoa, el tío del mono verde o yo?");
     document.getElementById("banyo").style.display = "none";
 }
 
@@ -416,6 +410,8 @@ function volverDentro() {
             document.getElementById("botella3").style.display = "none";
         }
     }
+    pasarDialogo("Pinto: ", "cadetblue", "Si yo hubiera montado esta fiesta todo sería más divertido...");
+
 }
 
 function pasarDialogo(textContentHabla, styleColor, textContentParrafo) {
@@ -512,6 +508,8 @@ function avanzarNano() {
         puedeJugarNano = false;
         // Cambiar las letras del úlitmo diálogo a su estado normal
         document.getElementById("texto").style.fontWeight = "normal";
+        pasarDialogo("Pinto: ", "cadetblue", "Me da a mi que los japoneses no van a mejorar el motor...");
+
         document.getElementById("monedaNano").src = "";
     }
     pasoNano++;
@@ -569,6 +567,8 @@ function irBanyo() {
             document.getElementById("botella2").style.display = "none";
         }
     }
+    pasarDialogo("Pinto: ", "cadetblue", "Esto ya se va pareciendo más a mis fiestas");
+
 }
 
 function salirBanyo() {
@@ -586,6 +586,7 @@ function salirBanyo() {
             document.getElementById("botella2").style.display = "block";
         }
     }
+    pasarDialogo("Pinto: ", "cadetblue", "Si yo hubiera montado esta fiesta todo sería más divertido...");
 }
 
 let puedeJugarCajaFuerte = true;
@@ -762,6 +763,7 @@ function avanzarCajaFuerte() {
         document.getElementById("minijuegoBanyo").style.display = "block";
         document.getElementById("salirBanyo").style.display = "block";
         document.getElementById("nariz").style.display = "block";
+        document.getElementById("texto").onclick = "null";
         puedeJugarCajaFuerte = false;
     }
     pasoCajaFuerte++;
