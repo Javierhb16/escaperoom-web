@@ -1,3 +1,5 @@
+let tiempoInicio = performance.now();
+let tiempoFinalMs;
 let dinero = 0.01
 actualizarDinero(dinero);
 
@@ -9,6 +11,7 @@ function irCasa() {
     document.getElementById("escena").style.backgroundImage = "url(img/casa.png)";
 
     document.getElementById("bobesponja").style.display = "block";
+    document.getElementById("peter").style.display = "block";
     document.getElementById("dentroCasa").style.display = "block";
     document.getElementById("parada").style.display = "block";
     document.getElementById("casa").style.display = "none";
@@ -23,6 +26,7 @@ function irCasa() {
 function irParada() {
     document.getElementById("escena").style.backgroundImage = "url(img/paradaBus.png)";
     document.getElementById("bobesponja").style.display = "none";
+    document.getElementById("peter").style.display = "none";
     document.getElementById("parada").style.display = "none";
     document.getElementById("dentroCasa").style.display = "none";
     document.getElementById("casa").style.display = "block";
@@ -40,16 +44,59 @@ function bus() {
         document.getElementById("escena").style.backgroundImage = "url(img/viviendoenlacalle.png)";
         document.getElementById("casa").style.display = "none";
         document.getElementById("bus").style.display = "none";
-        document.getElementById("parrafo").innerText = "en el autobus"
+        document.getElementById("texto").onclick = avanzarCalle;
+        avanzarCalle();
     } else {
-        document.getElementById("parrafo").innerText = "pobre"
+        pasarDialogo("Pinto: ", "gray", "Todavía te falta " +(1.00 - dinero).toFixed(2) + "€" + " para poder coger el autobús");
     }
+}
+
+function calcularTiempoFinal() {
+    let totalMs = performance.now() - tiempoInicio;
+    let segundosTotales = Math.floor(totalMs / 1000);
+    let minutos = Math.floor(segundosTotales / 60);
+    let segundos = segundosTotales % 60;
+
+    if (minutos > 0) {
+        return minutos + " minutos y " + segundos + " segundos";
+    } else {
+        return segundos + " segundos";
+    }
+}
+
+let pasoCalle = 0;
+
+function avanzarCalle() {
+    if (pasoCalle == 0) {
+        // Calculamos el tiempo justo ahora que termina el reto
+        tiempoFinalMs = calcularTiempoFinal(); 
+        
+        pasarDialogo("Viviendo en la Calle: ", "orange", "¡Ese Javi! Te he visto hablando con el Nano... ¿te ha dado la chapa con la 33?");
+    }
+    else if (pasoCalle == 1) {
+        pasarDialogo("Javier: ", "darkblue", "Casi me convence de que su coche es una tostadora, pero al menos me ha dado para el bus.");
+    }
+    else if (pasoCalle == 2) {
+        // Aquí el personaje te da tu marca de tiempo
+        pasarDialogo("Viviendo en la Calle: ", "orange", "Oye, pues no vas nada mal de tiempo. Te has pasado el juego en " + tiempoFinalMs + ".");
+    }
+    else if (pasoCalle == 3) {
+        pasarDialogo("Viviendo en la Calle: ", "orange", "A ese ritmo llegas a la parada antes de que Fernando encuentre el botón de DRS. ¡Nos vemos, figura!");
+    }
+    else {
+        // Final del juego o vuelta al menú
+        document.getElementById("texto").onclick = null;
+        alert("¡Juego completado en " + tiempoFinalMs + "!");
+        location.reload(); // Reinicia el juego
+    }
+    pasoCalle++;
 }
 
 function dentroCasa() {
 
     document.getElementById("escena").style.backgroundImage = "url(img/salon.png)";
     document.getElementById("parada").style.display = "none";
+    document.getElementById("peter").style.display = "none";
     document.getElementById("dentroCasa").style.display = "none";
     document.getElementById("puertaExit").style.display = "block";
     document.getElementById("cocina").style.display = "block";
@@ -72,6 +119,7 @@ function dentroCasa() {
 function salirCasa() {
     document.getElementById("escena").style.backgroundImage = "url(img/casa.png)";
     document.getElementById("dentroCasa").style.display = "block";
+    document.getElementById("peter").style.display = "block";
     document.getElementById("parada").style.display = "block";
     document.getElementById("bobesponja").style.display = "block";
     document.getElementById("gato").style.display = "none";
@@ -256,6 +304,16 @@ function miau() {
     audio.play();
 }
 
+function audioPeter() {
+    var audio = document.getElementById("sonidoPeter");
+    audio.play();
+}
+
+function sonidoNariz(){
+    var audio = document.getElementById("fredy");
+    audio.play();
+}
+
 function irPatio() {
     document.getElementById("escena").style.backgroundImage = "url(img/patioTrasero.png)";
     document.getElementById("gato").style.display = "none";
@@ -426,6 +484,7 @@ function irBanyo() {
     document.getElementById("patio").style.display = "none";
     document.getElementById("salirBanyo").style.display = "block";
     document.getElementById("minijuegoBanyo").style.display = "block";
+    document.getElementById("nariz").style.display = "block";
 }
 
 function salirBanyo() {
@@ -437,12 +496,14 @@ function salirBanyo() {
     document.getElementById("patio").style.display = "block";
     document.getElementById("salirBanyo").style.display = "none";
     document.getElementById("minijuegoBanyo").style.display = "none";
+    document.getElementById("nariz").style.display = "none";
 
 }
 
 let puedeJugarCajaFuerte = true;
 
 function minijuegoBanyo() {
+    document.getElementById("nariz").style.display = "none";
     if (puedeJugarCajaFuerte) {
         crearKeypad();
         document.getElementById("escena").style.backgroundImage = "url(img/keypad.png)";
@@ -500,6 +561,7 @@ function crearKeypad() {
         document.getElementById("escena").style.backgroundImage = "url(img/banyo.png)";
         document.getElementById("salirBanyo").style.display = "block";
         document.getElementById("minijuegoBanyo").style.display = "block";
+        document.getElementById("nariz").style.display = "block";
         document.getElementById("pantalla").remove();
 
         let botones = document.getElementsByClassName("boton");

@@ -201,6 +201,18 @@ body {
     top: 80px;
 }
 
+.peter {
+    background-image: url(img/peter.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    width: 200px;
+  height: 160px;
+  display: none;
+  left: 663px;
+  top: 615px;
+}
+
 .gato {
     background-image: url(img/gatete.png);
     background-size: contain;
@@ -211,6 +223,15 @@ body {
     display: none;
     left: 645px;
     top: 174px;
+}
+
+.nariz {
+    position: absolute;
+    width: 43px;
+    height: 38px;
+    display: none;
+    left: 1038px;
+    top: 395px;
 }
 
 .patio {
