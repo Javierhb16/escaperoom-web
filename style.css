@@ -266,6 +266,18 @@ body {
     top: 174px;
 }
 
+.homer {
+    background-image: url(img/homer.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    width: 129px;
+    height: 143px;
+    display: none;
+    left: 443px;
+    top: 359px;
+}
+
 .nariz {
     position: absolute;
     width: 43px;

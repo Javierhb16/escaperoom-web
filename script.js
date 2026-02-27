@@ -339,6 +339,11 @@ function audioPeter() {
     audio.play();
 }
 
+function audioHomer() {
+    var audio = document.getElementById("sonidoHomer");
+    audio.play();
+}
+
 function sonidoNariz() {
     var audio = document.getElementById("fredy");
     audio.play();
@@ -355,6 +360,7 @@ function irPatio() {
     document.getElementById("puertaExit").style.display = "none";
     document.getElementById("minijuegoNano").style.display = "block";
     document.getElementById("volverDentro").style.display = "block";
+    document.getElementById("homer").style.display = "block";
     document.getElementById("cocina").style.display = "none";
     if (!botellasApagadas) {
         if (document.getElementById("botella3") != null) {
@@ -374,6 +380,7 @@ function volverDentro() {
     document.getElementById("puertaExit").style.display = "block";
     document.getElementById("cocina").style.display = "block";
     document.getElementById("banyo").style.display = "block";
+    document.getElementById("homer").style.display = "none";
     document.getElementById("volverDentro").style.display = "none";
     document.getElementById("minijuegoNano").style.display = "none";
     document.getElementById("patio").style.display = "block";
@@ -405,6 +412,7 @@ function minijuegoNano() {
         document.getElementById("minijuegoNano").style.display = "none";
         document.getElementById("volverDentro").style.display = "none";
         document.getElementById("patio").style.display = "none";
+        document.getElementById("homer").style.display = "none";
         pasoNano = 0;
         document.getElementById("texto").onclick = avanzarNano;
         avanzarNano();
