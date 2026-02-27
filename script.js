@@ -1,4 +1,4 @@
-
+let tiempoInicio;
 let tiempoFinalMs;
 let dinero = 0.01
 
@@ -15,7 +15,7 @@ function jugar() {
     document.getElementById("casa").style.display = "block";
     document.getElementById("inicio").style.display = "none";
     document.getElementById("objetivo").innerText = "-Objetivo actual: \n Ayudar a Javi a conseguir el dinero que le falta";
-    let tiempoInicio = performance.now();
+    tiempoInicio = performance.now();
     pasarDialogo("Pinto: ", "gray", "Javi se ha cansado de estar en la fiesta mas loca de su vida y quiere volver a su casa, pero solo tiene " + dinero + "€ " + "y el autobus le cuesta 1€, vamos a ayudarle a conseguir el dinero que le falta, podemos empezar por volver a la fiesta y preguntarle a alguien.");
 
 }
@@ -300,6 +300,7 @@ function avanzarBellingham() {
             document.getElementById("monedaNano").src = "img/monedanano2.png";
             dinero += 0.33;
             actualizarDinero(dinero);
+            document.getElementById("destello").style.display = "block";
             pasarDialogo("", "black", "Has obtenido 33 NanoCéntimos. Te quedan " + (1.00 - dinero).toFixed(2) + " para poder coger el autobús");
             pasoBellingham++;
             segundaConverBellingham = false
@@ -309,8 +310,10 @@ function avanzarBellingham() {
             // Finalizar el minijuego y volver a la escena anterior
             if (dinero == 1) {
                 document.getElementById("objetivo").innerText = "-Objetivo actual: \n Volver al bus";
-            }else {document.getElementById("objetivo").innerText = "-Objetivo actual: \n Ayudar a Javi a conseguir el dinero que le falta";}
-            
+            } else {
+                document.getElementById("objetivo").innerText = "-Objetivo actual: \n Ayudar a Javi a conseguir el dinero que le falta";
+            }
+            document.getElementById("destello").style.display = "none";
             irCocina();
             document.getElementById("javi").src = "img/javi.png";
             // Quitarle la posibilidad al jugador de que vuelva a jugar el minijuego
@@ -406,7 +409,9 @@ let puedeJugarNano = true;
 
 function minijuegoNano() {
     if (puedeJugarNano) {
-        document.getElementById("botella3").style.display = "none";
+        if (document.getElementById("botella3") != null) {
+            document.getElementById("botella3").style.display = "none";
+        }
         document.getElementById("escena").style.backgroundImage = "url(img/fernandoAlonso.png)";
         document.getElementById("javi").src = "img/javisorprendido.png";
         document.getElementById("minijuegoNano").style.display = "none";
@@ -468,14 +473,18 @@ function avanzarNano() {
         document.getElementById("monedaNano").src = "img/monedanano1.png";
         dinero += 0.33;
         actualizarDinero(dinero);
+        document.getElementById("destello").style.display = "block";
         pasarDialogo("", "black", "Has obtenido 33 NanoCéntimos. Te quedan " + (1.00 - dinero).toFixed(2) + " para poder coger el autobús");
     }
     else {
         document.getElementById("texto").onclick = null; // Terminar diálogo
         // Finalizar el minijuego y volver a la escena anterior
         if (dinero == 1) {
-                document.getElementById("objetivo").innerText = "-Objetivo actual: \n Volver al bus";
-            }else {document.getElementById("objetivo").innerText = "-Objetivo actual: \n Ayudar a Javi a conseguir el dinero que le falta";}
+            document.getElementById("objetivo").innerText = "-Objetivo actual: \n Volver al bus";
+        } else {
+            document.getElementById("objetivo").innerText = "-Objetivo actual: \n Ayudar a Javi a conseguir el dinero que le falta";
+        }
+        document.getElementById("destello").style.display = "none";
         irPatio();
         document.getElementById("javi").src = "img/javi.png";
         // Quitarle la posibilidad al jugador de que vuelva a jugar el minijuego
@@ -569,19 +578,18 @@ function crearKeypad() {
     pantalla.id = "pantalla";
     pantalla.style.display = "block";
     contenedor.appendChild(pantalla);
-
+    // Crear botones
     for (let i = 0; i <= 9; i++) {
         let boton = document.createElement("div");
         boton.className = "boton";
         boton.id = "btn" + i;
-
         boton.onclick = function () {
             teclear(i);
         };
         boton.style.display = "block";
         contenedor.appendChild(boton);
     }
-
+    // Crear botón de borrar
     let borrar = document.createElement("div");
     borrar.className = "boton borrar";
     borrar.id = "borrar";
@@ -590,7 +598,7 @@ function crearKeypad() {
     };
     borrar.style.display = "block";
     contenedor.appendChild(borrar);
-
+    // Crear botón de enviar
     let enviar = document.createElement("div");
     enviar.className = "boton enviar";
     enviar.id = "enviar";
@@ -600,7 +608,16 @@ function crearKeypad() {
     enviar.style.display = "block";
     contenedor.appendChild(enviar);
 
-    // ARREGLAR BOTÓN, DA PROBLEMAS
+    // Crear huellas encima de los botones
+    for (let i = 1; i <= 3; i++) {
+        let huella = document.createElement("div");
+        huella.className = "huella";
+        huella.id = "huella" + i;
+        huella.style.display = "block";
+        contenedor.appendChild(huella);
+    }
+    
+    // Crear botón para volver al baño
     let volverBanyo = document.createElement("div");
     volverBanyo.id = "volverBanyo";
     volverBanyo.className = "volverBanyo";
@@ -616,6 +633,11 @@ function crearKeypad() {
         let botones = document.getElementsByClassName("boton");
         for (let i = 0; i < botones.length; i++) {
             botones[i].remove();
+            i--;
+        }
+        let huellas = document.getElementsByClassName("huella");
+        for (let i = 0; i < huellas.length; i++) {
+            huellas[i].remove();
             i--;
         }
         if (document.getElementById("imagenNanoNumerin") != null) {
@@ -666,10 +688,12 @@ function abrirCajaFuerte() {
     for (let i = 0; i < botones.length; i++) {
         botones[i].style.display = "none";
     }
-
+    let huellas = document.getElementsByClassName("huella");
+    for (let i = 0; i < huellas.length; i++) {
+        huellas[i].style.display = "none";
+    }
     document.getElementById("pantalla").style.display = "none";
-    document.getElementById("escena").backgroundImage = "url("
-
+    
     document.getElementById("texto").onclick = function () {
         avanzarCajaFuerte();
     }
@@ -688,6 +712,9 @@ function avanzarCajaFuerte() {
         document.getElementById("javi").src = "img/javi.png";
         pasarDialogo("Javier: ", "darkblue", "Bueno, creo que voy a llevarme solo lo que necesito");
     } else if (pasoCajaFuerte == 2) {
+        let audio = document.getElementById("audioYay");
+        audio.play();
+        document.getElementById("destello").style.display = "block";
         document.getElementById("texto").style.fontWeight = "bold";
         document.getElementById("javi").src = "img/javiDinero.png";
         dinero += 0.33;
@@ -695,12 +722,16 @@ function avanzarCajaFuerte() {
         pasarDialogo("", "black", "Has obtenido 33 NanoCéntimos. Te quedan " + (1.00 - dinero).toFixed(2) + " para poder coger el autobús");
     } else {
         if (dinero == 1) {
-                document.getElementById("objetivo").innerText = "-Objetivo actual: \n Volver al bus";
-            }else {document.getElementById("objetivo").innerText = "-Objetivo actual: \n Ayudar a Javi a conseguir el dinero que le falta";}
+            document.getElementById("objetivo").innerText = "-Objetivo actual: \n Volver al bus";
+        } else {
+            document.getElementById("objetivo").innerText = "-Objetivo actual: \n Ayudar a Javi a conseguir el dinero que le falta";
+        }
+        document.getElementById("destello").style.display = "none";
         document.getElementById("javi").src = "img/javi.png";
         document.getElementById("escena").style.backgroundImage = "url(img/banyo.png)";
         document.getElementById("minijuegoBanyo").style.display = "block";
         document.getElementById("salirBanyo").style.display = "block";
+        document.getElementById("nariz").style.display = "block";
         puedeJugarCajaFuerte = false;
     }
     pasoCajaFuerte++;
