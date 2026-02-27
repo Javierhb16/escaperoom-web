@@ -1,6 +1,6 @@
 let tiempoInicio;
 let tiempoFinalMs;
-let dinero = 0.01;
+let dinero = 1;
 
 
 
@@ -92,6 +92,7 @@ let pasoLobato = 0;
 function avanzarLobato() {
     
     if (pasoLobato == 0) {
+        document.getElementById("javi").src = "img/javisorprendido.png";
         pasarDialogo("Lobato: ", "orange", "¡Qué pasa Javi! ¡Vaya fiesta te has pegado!");
     }
     else if (pasoLobato == 1) {
@@ -292,7 +293,7 @@ function avanzarBellingham() {
             pasarDialogo("Javier: ", "darkblue", "Me parece bien, voy a buscarlas");
         } else if (pasoBellingham == 5) {
             document.getElementById("texto").onclick = null;
-            document.getElementById("objetivo").innerText = "-Objetivo actual: \n Conseguir las botellas a Bellingham";
+            document.getElementById("objetivo").innerText = "-Objetivo actual: \n Conseguirle las botellas a Bellingham";
             spawnBotellas();
         }
 
@@ -313,7 +314,7 @@ function avanzarBellingham() {
             dinero += 0.33;
             actualizarDinero(dinero);
             document.getElementById("destello").style.display = "block";
-            pasarDialogo("", "black", "Has obtenido 33 NanoCéntimos. Te quedan " + (1.00 - dinero).toFixed(2) + " para poder coger el autobús");
+            pasarDialogo("", "black", "Has obtenido 33 NanoCéntimos. Te quedan " + (1.00 - dinero).toFixed(2) + "€ para poder coger el autobús");
             segundaConverBellingham = false
         }
         else {
@@ -388,7 +389,7 @@ function irPatio() {
             document.getElementById("botella2").style.display = "none";
         }
     }
-    pasarDialogo("Pinto: ", "cadetblue", "¿Quíén está más caliente: la barbacoa, el tío del mono verde o yo?");
+    pasarDialogo("Pinto: ", "cadetblue", "¿Quíén está más caliente: la barbacoa, el tío del mono verde, o yo al ver las dos cosas?");
     document.getElementById("banyo").style.display = "none";
 }
 
@@ -491,16 +492,14 @@ function avanzarNano() {
         dinero += 0.33;
         actualizarDinero(dinero);
         document.getElementById("destello").style.display = "block";
-        pasarDialogo("", "black", "Has obtenido 33 NanoCéntimos. Te quedan " + (1.00 - dinero).toFixed(2) + " para poder coger el autobús");
+        pasarDialogo("", "black", "Has obtenido 33 NanoCéntimos. Te quedan " + (1.00 - dinero).toFixed(2) + "€ para poder coger el autobús");
     }
     else {
         document.getElementById("texto").onclick = null; // Terminar diálogo
         // Finalizar el minijuego y volver a la escena anterior
         if (dinero == 1) {
             document.getElementById("objetivo").innerText = "-Objetivo actual: \n Volver al bus";
-        } else {
-            document.getElementById("objetivo").innerText = "-Objetivo actual: \n Ayudar a Javi a conseguir el dinero que le falta";
-        }
+        } 
         document.getElementById("destello").style.display = "none";
         irPatio();
         document.getElementById("javi").src = "img/javi.png";
@@ -604,6 +603,7 @@ function minijuegoBanyo() {
 }
 
 function crearKeypad() {
+    pasarDialogo("Pinto: ", "cadetblue", "Hay un número escrito con rotulador en el keypad. Prueba a ver qué sale");
     const contenedor = document.getElementById("escena");
     const pantalla = document.createElement("div");
     pantalla.id = "pantalla";
@@ -660,7 +660,7 @@ function crearKeypad() {
         document.getElementById("minijuegoBanyo").style.display = "block";
         document.getElementById("nariz").style.display = "block";
         document.getElementById("pantalla").remove();
-
+        pasarDialogo("Pinto: ", "cadetblue", "Esto ya se va pareciendo más a mis fiestas");
         let botones = document.getElementsByClassName("boton");
         for (let i = 0; i < botones.length; i++) {
             botones[i].remove();
@@ -695,6 +695,7 @@ function comprobarCodigo() {
     let codigoCorrecto = 239;
     let introducido = parseInt(document.getElementById("pantalla").innerText);
     if (introducido == 333) {
+        pasarDialogo("Pinto: ", "cadetblue", "Pues igual ese numerín no era el correcto. O sí, depende cómo lo mires");
         let imagenNanoNumerin = document.createElement("img");
         imagenNanoNumerin.style.display = "block";
         imagenNanoNumerin.src = "img/numerin.png";
@@ -702,6 +703,8 @@ function comprobarCodigo() {
         imagenNanoNumerin.id = "imagenNanoNumerin";
         document.getElementById("escena").appendChild(imagenNanoNumerin);
         document.getElementById("pantalla").innerText = "";
+        let audio = document.getElementById("audioWomp");
+        audio.play();
     }
     else if (introducido != codigoCorrecto) {
         document.getElementById("pantalla").innerText = "INCORRECTO";
@@ -750,12 +753,10 @@ function avanzarCajaFuerte() {
         document.getElementById("javi").src = "img/javiDinero.png";
         dinero += 0.33;
         actualizarDinero(dinero);
-        pasarDialogo("", "black", "Has obtenido 33 NanoCéntimos. Te quedan " + (1.00 - dinero).toFixed(2) + " para poder coger el autobús");
+        pasarDialogo("", "black", "Has obtenido 33 NanoCéntimos. Te quedan " + (1.00 - dinero).toFixed(2) + "€ para poder coger el autobús");
     } else {
         if (dinero == 1) {
             document.getElementById("objetivo").innerText = "-Objetivo actual: \n Volver al bus";
-        } else {
-            
         }
         document.getElementById("destello").style.display = "none";
         document.getElementById("javi").src = "img/javi.png";
@@ -764,6 +765,8 @@ function avanzarCajaFuerte() {
         document.getElementById("salirBanyo").style.display = "block";
         document.getElementById("nariz").style.display = "block";
         document.getElementById("texto").onclick = "null";
+        pasarDialogo("Pinto: ", "cadetblue", "Esto ya se va pareciendo más a mis fiestas");
+        document.getElementById("parrafo").style.fontWeight = "normal";
         puedeJugarCajaFuerte = false;
     }
     pasoCajaFuerte++;
