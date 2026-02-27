@@ -755,7 +755,7 @@ function avanzarCajaFuerte() {
         if (dinero == 1) {
             document.getElementById("objetivo").innerText = "-Objetivo actual: \n Volver al bus";
         } else {
-            document.getElementById("objetivo").innerText = "-Objetivo actual: \n Ayudar a Javi a conseguir el dinero que le falta";
+            
         }
         document.getElementById("destello").style.display = "none";
         document.getElementById("javi").src = "img/javi.png";
