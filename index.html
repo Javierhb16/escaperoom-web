@@ -10,12 +10,13 @@
 
 <body>
 
-    <img src="img/pinto.png" alt="Personaje izquierda" class="izquierda">
+    <img src="img/pinto.png" id="pinto" alt="Personaje izquierda" class="izquierda">
 
     <div class="dinero" id="dinero"></div>
 
     <div id="main">
         <div class="escena" id="escena"></div>
+        <div class="inicio" id="inicio" onclick="jugar()"></div>
         <div class="casa" id="casa" onclick="irCasa()"></div>
         <div class="parada" id="parada" onclick="irParada()"></div>
         <div class="bus" id="bus" onclick="bus()"></div>
@@ -41,6 +42,7 @@
         <div class="bobesponja" id="bobesponja" onclick="sonidoBob()"><audio id="miAudioBob"
                 src="audio/audiobob.mp3"></audio></div>
         <div class="gato" id="gato" onclick="miau()"><audio id="miau" src="audio/miau.mp3"></audio></div>
+        <div class="batman" id="batman" onclick="noche()"><audio id="audioBatman" src="audio/audioBatman.mp3"></audio></div>
         <div class="peter" id="peter" onclick="audioPeter()"><audio id="sonidoPeter" src="audio/peter.mp3"></audio></div>
         <div class="audioNano" >           
             <audio id="audioNano" src="audio/elNano.mp3"></audio>
@@ -52,7 +54,7 @@
             <audio id="fredy" src="audio/fredy.mp3"></audio>
         </div>
 
-
+<div class="objetivo" id="objetivo"></div>
 
 
 

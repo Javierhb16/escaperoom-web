@@ -1,6 +1,25 @@
-let tiempoInicio = performance.now();
+
 let tiempoFinalMs;
 let dinero = 0.01
+
+
+
+function jugar() {
+    document.getElementById("escena").style.backgroundImage = "url(img/paradaBus.png)"
+    document.getElementById("bus").style.display = "block";
+    document.getElementById("javi").style.display = "block";
+    document.getElementById("pinto").style.display = "block";
+    document.getElementById("texto").style.display = "block";
+    document.getElementById("objetivo").style.display = "block";
+    document.getElementById("dinero").style.display = "block";
+    document.getElementById("casa").style.display = "block";
+    document.getElementById("inicio").style.display = "none";
+    document.getElementById("objetivo").innerText = "-Objetivo actual: \n Ayudar a Javi a conseguir el dinero que le falta";
+    let tiempoInicio = performance.now();
+    pasarDialogo("Pinto: ", "gray", "Javi se ha cansado de estar en la fiesta mas loca de su vida y quiere volver a su casa, pero solo tiene " + dinero + "€ " + "y el autobus le cuesta 1€, vamos a ayudarle a conseguir el dinero que le falta, podemos empezar por volver a la fiesta y preguntarle a alguien.");
+
+}
+
 actualizarDinero(dinero);
 
 function actualizarDinero(dinero) {
@@ -14,27 +33,29 @@ function irCasa() {
     document.getElementById("peter").style.display = "block";
     document.getElementById("dentroCasa").style.display = "block";
     document.getElementById("parada").style.display = "block";
+    document.getElementById("batman").style.display = "none";
     document.getElementById("casa").style.display = "none";
     document.getElementById("bus").style.display = "none";
     document.getElementById("puertaExit").style.display = "none";
     document.getElementById("patio").style.display = "block";
-    document.getElementById("parrafo").innerText = "cuanta gente"
+    document.getElementById("parrafo").innerText = "¿Ese es Peter Griffin? Parece que se ha dado un buen golpe. Espera un momento \n ¿Qué hace Bob Esponja volando y tocando un solo de guitarra? Parece que ninguno de los dos puede ayudarnos."
     document.getElementById("patio").style.display = "none";
 
 }
 
 function irParada() {
-    document.getElementById("escena").style.backgroundImage = "url(img/paradaBus.png)";
+    document.getElementById("escena").style.backgroundImage = "url(img/paradaBus2.png)";
     document.getElementById("bobesponja").style.display = "none";
     document.getElementById("peter").style.display = "none";
     document.getElementById("parada").style.display = "none";
     document.getElementById("dentroCasa").style.display = "none";
     document.getElementById("casa").style.display = "block";
     document.getElementById("bus").style.display = "block";
-    document.getElementById("parrafo").innerText = "en la parada"
+    document.getElementById("batman").style.display = "block";
+    document.getElementById("parrafo").innerText = "Parece que alguien se ha pasado con la bebida..."
     document.getElementById("patio").style.display = "none";
     document.getElementById("patio").style.display = "none";
-    
+
 }
 
 
@@ -47,7 +68,7 @@ function bus() {
         document.getElementById("texto").onclick = avanzarCalle;
         avanzarCalle();
     } else {
-        pasarDialogo("Pinto: ", "gray", "Todavía te falta " +(1.00 - dinero).toFixed(2) + "€" + " para poder coger el autobús");
+        pasarDialogo("Pinto: ", "gray", "Todavía te falta " + (1.00 - dinero).toFixed(2) + "€" + " para poder coger el autobús");
     }
 }
 
@@ -69,8 +90,8 @@ let pasoCalle = 0;
 function avanzarCalle() {
     if (pasoCalle == 0) {
         // Calculamos el tiempo justo ahora que termina el reto
-        tiempoFinalMs = calcularTiempoFinal(); 
-        
+        tiempoFinalMs = calcularTiempoFinal();
+
         pasarDialogo("Viviendo en la Calle: ", "orange", "¡Ese Javi! Te he visto hablando con el Nano... ¿te ha dado la chapa con la 33?");
     }
     else if (pasoCalle == 1) {
@@ -132,7 +153,7 @@ function salirCasa() {
     document.getElementById("banyo").style.display = "none";
     document.getElementById("patio").style.display = "none";
     document.getElementById("cocina").style.display = "none";
-    
+
     document.getElementById("parrafo").innerText = "cuanta gente";
 
 }
@@ -145,17 +166,20 @@ function irCocina() {
     document.getElementById("volverSalon").style.display = "block";
     document.getElementById("patio").style.display = "none";
     document.getElementById("cocina").style.display = "none";
+    
     if (!botellasApagadas) {
         if (document.getElementById("botella1") != null) {
             document.getElementById("botella1").style.display = "block";
+
         }
         if (document.getElementById("botella2") != null) {
             document.getElementById("botella2").style.display = "none";
+
         }
     }
-    
 
-    document.getElementById("parrafo").innerHTML = "en la cocina"
+    document.getElementById("parrafo").innerText = "Hombre si es bellingham."
+    
     document.getElementById("banyo").style.display = "none";
 
 }
@@ -256,7 +280,9 @@ function avanzarBellingham() {
             pasarDialogo("Javier: ", "darkblue", "yo te las traigo");
             pasoBellingham++;
             document.getElementById("texto").onclick = null;
+            document.getElementById("objetivo").innerText = "-Objetivo actual: \n Conseguir las botellas a Bellingham";
             spawnBotellas();
+
         }
 
     } else {
@@ -281,6 +307,10 @@ function avanzarBellingham() {
         else {
             document.getElementById("texto").onclick = null; // Terminar diálogo
             // Finalizar el minijuego y volver a la escena anterior
+            if (dinero == 1) {
+                document.getElementById("objetivo").innerText = "-Objetivo actual: \n Volver al bus";
+            }else {document.getElementById("objetivo").innerText = "-Objetivo actual: \n Ayudar a Javi a conseguir el dinero que le falta";}
+            
             irCocina();
             document.getElementById("javi").src = "img/javi.png";
             // Quitarle la posibilidad al jugador de que vuelva a jugar el minijuego
@@ -309,8 +339,13 @@ function audioPeter() {
     audio.play();
 }
 
-function sonidoNariz(){
+function sonidoNariz() {
     var audio = document.getElementById("fredy");
+    audio.play();
+}
+
+function noche() {
+    var audio = document.getElementById("audioBatman");
     audio.play();
 }
 
@@ -346,7 +381,9 @@ function volverDentro() {
         if (document.getElementById("botella2") != null) {
             document.getElementById("botella2").style.display = "block";
         }
-
+        if (document.getElementById("botella3") != null) {
+            document.getElementById("botella3").style.display = "none";
+        }
     }
 }
 
@@ -362,6 +399,7 @@ let puedeJugarNano = true;
 
 function minijuegoNano() {
     if (puedeJugarNano) {
+        document.getElementById("botella3").style.display = "none";
         document.getElementById("escena").style.backgroundImage = "url(img/fernandoAlonso.png)";
         document.getElementById("javi").src = "img/javisorprendido.png";
         document.getElementById("minijuegoNano").style.display = "none";
@@ -427,6 +465,9 @@ function avanzarNano() {
     else {
         document.getElementById("texto").onclick = null; // Terminar diálogo
         // Finalizar el minijuego y volver a la escena anterior
+        if (dinero == 1) {
+                document.getElementById("objetivo").innerText = "-Objetivo actual: \n Volver al bus";
+            }else {document.getElementById("objetivo").innerText = "-Objetivo actual: \n Ayudar a Javi a conseguir el dinero que le falta";}
         irPatio();
         document.getElementById("javi").src = "img/javi.png";
         // Quitarle la posibilidad al jugador de que vuelva a jugar el minijuego
@@ -524,9 +565,9 @@ function crearKeypad() {
     for (let i = 0; i <= 9; i++) {
         let boton = document.createElement("div");
         boton.className = "boton";
-        boton.id = "btn" + i;          
+        boton.id = "btn" + i;
 
-        boton.onclick = function() {   
+        boton.onclick = function () {
             teclear(i);
         };
         boton.style.display = "block";
@@ -536,7 +577,7 @@ function crearKeypad() {
     let borrar = document.createElement("div");
     borrar.className = "boton borrar";
     borrar.id = "borrar";
-    borrar.onclick = function() {
+    borrar.onclick = function () {
         borrarPantalla();
     };
     borrar.style.display = "block";
@@ -545,7 +586,7 @@ function crearKeypad() {
     let enviar = document.createElement("div");
     enviar.className = "boton enviar";
     enviar.id = "enviar";
-    enviar.onclick = function() {
+    enviar.onclick = function () {
         comprobarCodigo();
     };
     enviar.style.display = "block";
@@ -557,7 +598,7 @@ function crearKeypad() {
     volverBanyo.className = "volverBanyo";
     volverBanyo.innerText = "Volver al baño";
     contenedor.appendChild(volverBanyo);
-    volverBanyo.onclick = function() {
+    volverBanyo.onclick = function () {
         document.getElementById("escena").style.backgroundImage = "url(img/banyo.png)";
         document.getElementById("salirBanyo").style.display = "block";
         document.getElementById("minijuegoBanyo").style.display = "block";
@@ -581,12 +622,12 @@ function teclear(tecla) {
         document.getElementById("pantalla").innerText = "";
     }
     if (document.getElementById("pantalla").innerText.length < 3) {
-        document.getElementById("pantalla").innerText += tecla; 
+        document.getElementById("pantalla").innerText += tecla;
     }
 }
 
 function borrarPantalla() {
-    document.getElementById("pantalla").innerText = ""; 
+    document.getElementById("pantalla").innerText = "";
 }
 
 function comprobarCodigo() {
@@ -621,7 +662,7 @@ function abrirCajaFuerte() {
     document.getElementById("pantalla").style.display = "none";
     document.getElementById("escena").backgroundImage = "url("
 
-    document.getElementById("texto").onclick = function() {
+    document.getElementById("texto").onclick = function () {
         avanzarCajaFuerte();
     }
     document.getElementById("volverBanyo").remove();
@@ -645,6 +686,9 @@ function avanzarCajaFuerte() {
         actualizarDinero(dinero);
         pasarDialogo("", "black", "Has obtenido 33 NanoCéntimos. Te quedan " + (1.00 - dinero).toFixed(2) + " para poder coger el autobús");
     } else {
+        if (dinero == 1) {
+                document.getElementById("objetivo").innerText = "-Objetivo actual: \n Volver al bus";
+            }else {document.getElementById("objetivo").innerText = "-Objetivo actual: \n Ayudar a Javi a conseguir el dinero que le falta";}
         document.getElementById("javi").src = "img/javi.png";
         document.getElementById("escena").style.backgroundImage = "url(img/banyo.png)";
         document.getElementById("minijuegoBanyo").style.display = "block";

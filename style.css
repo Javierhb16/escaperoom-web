@@ -21,10 +21,11 @@ body {
     text-align: center;
     font-size: 24px;
     border-radius: 20px;
+    display: none;
 }
 
 .escena {
-    background-image: url("img/paradaBus.png");
+    background-image: url("img/escenaInicial.png");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: bottom;
@@ -40,6 +41,7 @@ body {
     position: absolute;
     bottom: 0;
     height: 35vw;
+    display: none;
 }
 
 .derecha {
@@ -58,6 +60,16 @@ body {
     height: 819px;
 }
 
+.inicio {
+    position: absolute;
+    width: 274px;
+    height: 83px;
+    top: 570px;
+    right: 823px;
+    cursor: pointer;
+}
+
+
 .texto {
     width: 70vw;
     margin-top: 20px;
@@ -67,6 +79,25 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     text-align: center;
     font-size: 22px;
+    display: none;
+    -webkit-box-shadow: 0px 0px 34px 0px rgba(0, 0, 0, 1);
+    -moz-box-shadow: 0px 0px 34px 0px rgba(0, 0, 0, 1);
+    box-shadow: 0px 0px 34px 0px rgba(0, 0, 0, 1);
+}
+
+.objetivo {
+    position: absolute;
+    width: 281px;
+    height: 205px;
+    margin-left: 1483px;
+    margin-top: 1px;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    text-align: left;
+    font-size: 22px;
+    display: none;
     -webkit-box-shadow: 0px 0px 34px 0px rgba(0, 0, 0, 1);
     -moz-box-shadow: 0px 0px 34px 0px rgba(0, 0, 0, 1);
     box-shadow: 0px 0px 34px 0px rgba(0, 0, 0, 1);
@@ -77,6 +108,7 @@ body {
     width: 91px;
     height: 111px;
     top: 348px;
+    display: none;
     right: 808px;
 }
 
@@ -95,6 +127,15 @@ body {
     height: 394px;
     top: 266px;
     right: 428px;
+}
+
+.batman {
+    position: absolute;
+    width: 169px;
+    height: 268px;
+    top: 434px;
+    right: 1118px;
+    display: none;
 }
 
 .dentroCasa {
@@ -207,10 +248,10 @@ body {
     background-repeat: no-repeat;
     position: absolute;
     width: 200px;
-  height: 160px;
-  display: none;
-  left: 663px;
-  top: 615px;
+    height: 160px;
+    display: none;
+    left: 663px;
+    top: 615px;
 }
 
 .gato {
