@@ -16,7 +16,7 @@ function jugar() {
     document.getElementById("inicio").style.display = "none";
     document.getElementById("objetivo").innerText = "-Objetivo actual: \n Ayudar a Javi a conseguir el dinero que le falta";
     tiempoInicio = performance.now();
-    pasarDialogo("Pinto: ", "gray", "Javi se ha cansado de estar en la fiesta mas loca de su vida y quiere volver a su casa, pero solo tiene " + dinero + "€ " + "y el autobus le cuesta 1€, vamos a ayudarle a conseguir el dinero que le falta, podemos empezar por volver a la fiesta y preguntarle a alguien.");
+    pasarDialogo("Pinto: ", "cadetblue", "Javi se ha cansado de estar en la fiesta más loca de su vida y quiere volver a su casa, pero solo tiene " + dinero + "€ " + "y el autobús cuesta 1€, así que vamos a ayudarle a conseguir el dinero que le falta. Podemos empezar por volver a la fiesta y preguntarle a alguien.");
 
 }
 
@@ -38,7 +38,7 @@ function irCasa() {
     document.getElementById("bus").style.display = "none";
     document.getElementById("puertaExit").style.display = "none";
     document.getElementById("patio").style.display = "block";
-    document.getElementById("parrafo").innerText = "¿Ese es Peter Griffin? Parece que se ha dado un buen golpe. Espera un momento \n ¿Qué hace Bob Esponja volando y tocando un solo de guitarra? Parece que ninguno de los dos puede ayudarnos."
+    document.getElementById("parrafo").innerText = "¿Ese es Peter Griffin? Parece que se ha dado un buen golpe. Espera un momento, \n ¿qué hace Bob Esponja volando y tocando un solo de guitarra? Parece que ninguno de los dos puede ayudarnos."
     document.getElementById("patio").style.display = "none";
 
 }
@@ -52,7 +52,7 @@ function irParada() {
     document.getElementById("casa").style.display = "block";
     document.getElementById("bus").style.display = "block";
     document.getElementById("batman").style.display = "block";
-    document.getElementById("parrafo").innerText = "Parece que alguien se ha pasado con la bebida..."
+    document.getElementById("parrafo").innerText = "Parece que alguien se ha pasado bebiendo Jugo de la Felicidad..."
     document.getElementById("patio").style.display = "none";
     document.getElementById("patio").style.display = "none";
 
@@ -68,7 +68,7 @@ function bus() {
         document.getElementById("texto").onclick = avanzarCalle;
         avanzarCalle();
     } else {
-        pasarDialogo("Pinto: ", "gray", "Todavía te falta " + (1.00 - dinero).toFixed(2) + "€" + " para poder coger el autobús");
+        pasarDialogo("Pinto: ", "cadetblue", "Todavía te falta " + (1.00 - dinero).toFixed(2) + "€ para poder coger el autobús");
     }
 }
 
@@ -232,7 +232,7 @@ function minijuegoBellingham() {
         document.getElementById("texto").onclick = avanzarBellingham;
         avanzarBellingham();
     } else {
-        pasarDialogo("Pinto: ", "gray", "Deja a bellingham borracho");
+        pasarDialogo("Pinto: ", "cadetblue", "Deja a bellingham borracho");
     }
 }
 
@@ -426,7 +426,7 @@ function minijuegoNano() {
         document.getElementById("texto").onclick = avanzarNano;
         avanzarNano();
     } else {
-        pasarDialogo("Pinto: ", "gray", "Has dejado a Alonso sin un duro, a pedir limosna a otro lado");
+        pasarDialogo("Pinto: ", "cadetblue", "Has dejado a Alonso sin un duro, a pedir limosna a otro lado");
     }
 }
 
@@ -581,7 +581,7 @@ function minijuegoBanyo() {
         document.getElementById("minijuegoBanyo").style.display = "none";
         document.getElementById("salirBanyo").style.display = "none";
     } else {
-        pasarDialogo("Pinto: ", "gray", "“La riqueza no consiste en tener grandes posesiones, sino en tener pocas necesidades.” — Epicteto");
+        pasarDialogo("Pinto: ", "cadetblue", "“La riqueza no consiste en tener grandes posesiones, sino en tener pocas necesidades.” — Epicteto");
     }
 }
 
