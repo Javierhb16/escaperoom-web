@@ -286,6 +286,9 @@ function avanzarBellingham() {
         }
 
     } else {
+        document.getElementById("escena").style.backgroundImage = "url(img/bellinghamDifuminado.png)";
+        document.getElementById("minijuegoBellingham").style.display = "none";
+        document.getElementById("volverSalon").style.display = "none";
         if (pasoBellingham == 5) {
             pasarDialogo("Javier: ", "darkblue", "Aqui las tienes");
             pasoBellingham++;
@@ -306,6 +309,7 @@ function avanzarBellingham() {
             segundaConverBellingham = false
         }
         else {
+            document.getElementById("escena").style.backgroundImage = "url(img/cocina.png)";
             document.getElementById("texto").onclick = null; // Terminar diálogo
             // Finalizar el minijuego y volver a la escena anterior
             if (dinero == 1) {
@@ -543,6 +547,11 @@ function irBanyo() {
     document.getElementById("salirBanyo").style.display = "block";
     document.getElementById("minijuegoBanyo").style.display = "block";
     document.getElementById("nariz").style.display = "block";
+    if (!botellasApagadas) {
+        if (document.getElementById("botella2") != null) {
+            document.getElementById("botella2").style.display = "none";
+        }
+    }
 }
 
 function salirBanyo() {
@@ -555,7 +564,11 @@ function salirBanyo() {
     document.getElementById("salirBanyo").style.display = "none";
     document.getElementById("minijuegoBanyo").style.display = "none";
     document.getElementById("nariz").style.display = "none";
-
+    if (!botellasApagadas) {
+        if (document.getElementById("botella2") != null) {
+            document.getElementById("botella2").style.display = "block";
+        }
+    }
 }
 
 let puedeJugarCajaFuerte = true;
