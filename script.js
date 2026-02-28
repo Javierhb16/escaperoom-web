@@ -2,6 +2,12 @@ let tiempoInicio;
 let tiempoFinalMs;
 let dinero = 0.01;
 
+// Bajar volumen de los audios
+let audios = document.getElementsByTagName("audio");
+for (let i = 0; i < audios.length; i++) {
+    audios[i].volume = 0.35;
+}
+
 function jugar() {
     document.getElementById("escena").style.backgroundImage = "url(img/paradaBus.png)"
     document.getElementById("bus").style.display = "block";
