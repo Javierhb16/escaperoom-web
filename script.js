@@ -1,8 +1,6 @@
 let tiempoInicio;
 let tiempoFinalMs;
-let dinero = 1;
-
-
+let dinero = 0.01;
 
 function jugar() {
     document.getElementById("escena").style.backgroundImage = "url(img/paradaBus.png)"
@@ -17,7 +15,6 @@ function jugar() {
     document.getElementById("objetivo").innerText = "-Objetivo actual: \n Ayudar a Javi a conseguir el dinero que le falta";
     tiempoInicio = performance.now();
     pasarDialogo("Pinto: ", "cadetblue", "Javi se ha cansado de estar en la fiesta más loca de su vida y quiere volver a su casa, pero solo tiene " + dinero + "€ " + "y el autobús cuesta 1€, así que vamos a ayudarle a conseguir el dinero que le falta. Podemos empezar por volver a la fiesta y preguntarle a alguien.");
-
 }
 
 actualizarDinero(dinero);
@@ -28,7 +25,6 @@ function actualizarDinero(dinero) {
 
 function irCasa() {
     document.getElementById("escena").style.backgroundImage = "url(img/casa.png)";
-
     document.getElementById("bobesponja").style.display = "block";
     document.getElementById("peter").style.display = "block";
     document.getElementById("dentroCasa").style.display = "block";
@@ -40,7 +36,6 @@ function irCasa() {
     document.getElementById("patio").style.display = "block";
     pasarDialogo("Pinto: ", "cadetblue", "¿Ese es Peter Griffin? Parece que se ha dado un buen golpe. Espera un momento, \n ¿qué hace Bob Esponja volando y tocando un solo de guitarra? Parece que ninguno de los dos puede ayudarnos.");
     document.getElementById("patio").style.display = "none";
-
 }
 
 function irParada() {
@@ -55,10 +50,7 @@ function irParada() {
     document.getElementById("parrafo").innerText = "Parece que alguien se ha pasado con Jugo de la Felicidad..."
     document.getElementById("patio").style.display = "none";
     document.getElementById("patio").style.display = "none";
-
 }
-
-
 
 function bus() {
     if (dinero == 1) {
@@ -86,11 +78,9 @@ function calcularTiempoFinal() {
     }
 }
 
-
 let pasoLobato = 0;
 
-function avanzarLobato() {
-    
+function avanzarLobato() {    
     if (pasoLobato == 0) {
         document.getElementById("javi").src = "img/javisorprendido.png";
         pasarDialogo("Lobato: ", "orange", "¡Qué pasa Javi! ¡Vaya fiesta te has pegado!");
@@ -109,7 +99,6 @@ function avanzarLobato() {
     else if (pasoLobato == 4) {
         document.getElementById("escena").style.backgroundImage = "url(img/lobato.png)";
         pasarDialogo("Lobato: ", "orange", "No, perdóname a mi, no debería haberte gritado");
-        
     }
     else if (pasoLobato == 5) {
         pasarDialogo("Lobato: ", "orange", "Mira, por ser tú te llevo gratis a casa. ¡Venga, sube!");
@@ -127,11 +116,9 @@ function avanzarLobato() {
         location.reload(); // Reinicia el juego
     }
     pasoLobato++;
-
 }
 
 function dentroCasa() {
-
     document.getElementById("escena").style.backgroundImage = "url(img/salon.png)";
     document.getElementById("parada").style.display = "none";
     document.getElementById("peter").style.display = "none";
@@ -148,9 +135,6 @@ function dentroCasa() {
             document.getElementById("botella2").style.display = "block";
         }
     }
-
-
-
     document.getElementById("banyo").style.display = "block";
 }
 
@@ -170,9 +154,7 @@ function salirCasa() {
     document.getElementById("banyo").style.display = "none";
     document.getElementById("patio").style.display = "none";
     document.getElementById("cocina").style.display = "none";
-
     pasarDialogo("Pinto: ", "cadetblue", "¿Ese es Peter Griffin? Parece que se ha dado un buen golpe. Espera un momento, \n ¿qué hace Bob Esponja volando y tocando un solo de guitarra? Parece que ninguno de los dos puede ayudarnos.");
-
 }
 
 function irCocina() {
@@ -186,7 +168,6 @@ function irCocina() {
 
     if (!botellasApagadas) {
         pasarDialogo("Pinto: ", "cadetblue", "Traele las tres botellas de Jugo de la Felicidad a Bellingham");
-
         if (document.getElementById("botella1") != null) {
             document.getElementById("botella1").style.display = "block";
         }
@@ -196,13 +177,10 @@ function irCocina() {
     } else {
         pasarDialogo("Pinto: ", "cadetblue", "¿Qué hace aquí Bellingham?");
     }
-
     document.getElementById("banyo").style.display = "none";
-
 }
 
 function volverSalon() {
-
     document.getElementById("escena").style.backgroundImage = "url(img/salon.png)";
     document.getElementById("gato").style.display = "block";
     document.getElementById("puertaExit").style.display = "block";
@@ -276,8 +254,6 @@ function cogerBotella3() {
     botellasObtenidas++;
 }
 
-
-
 function avanzarBellingham() {
 
     if (botellasObtenidas == 0 && segundaConverBellingham == false) {
@@ -296,8 +272,8 @@ function avanzarBellingham() {
             document.getElementById("objetivo").innerText = "-Objetivo actual: \n Conseguirle las botellas a Bellingham";
             spawnBotellas();
         }
-
-    } else {
+    } 
+    else {
         document.getElementById("escena").style.backgroundImage = "url(img/bellinghamDifuminado.png)";
         document.getElementById("minijuegoBellingham").style.display = "none";
         document.getElementById("volverSalon").style.display = "none";
@@ -338,10 +314,7 @@ function avanzarBellingham() {
         }
     }
     pasoBellingham++;
-
 }
-
-
 
 function sonidoBob() {
     var audio = document.getElementById("miAudioBob");
@@ -389,7 +362,7 @@ function irPatio() {
             document.getElementById("botella2").style.display = "none";
         }
     }
-    pasarDialogo("Pinto: ", "cadetblue", "¿Quíén está más caliente: la barbacoa, el tío del mono verde, o yo al ver las dos cosas?");
+    pasarDialogo("Pinto: ", "cadetblue", "¿Quién está más caliente: la barbacoa, el tío del mono verde, o yo al ver las dos cosas?");
     document.getElementById("banyo").style.display = "none";
 }
 
@@ -412,7 +385,6 @@ function volverDentro() {
         }
     }
     pasarDialogo("Pinto: ", "cadetblue", "Si yo hubiera montado esta fiesta todo sería más divertido...");
-
 }
 
 function pasarDialogo(textContentHabla, styleColor, textContentParrafo) {
@@ -477,7 +449,6 @@ function avanzarNano() {
         pasarDialogo("Fernando Alonso: ", "darkgreen", "Da igual cuál hubieses elegido, todas daban 33");
     }
     else if (pasoNano == 10) {
-        // pasarDialogo("Fernando Alonso: ", "darkgreen", "Es como la estrategia de carrera, da igual cuál usemos, porque con todas quedamos últimos");
         pasarDialogo("Fernando Alonso: ", "darkgreen", "Al final lo importante es hacerlo todo de corazón, aunque no tengas ni idea de lo que estás haciendo");
     }
     else if (pasoNano == 11) {
@@ -492,6 +463,7 @@ function avanzarNano() {
         dinero += 0.33;
         actualizarDinero(dinero);
         document.getElementById("destello").style.display = "block";
+        document.getElementById("texto").style.fontWeight = "bold";
         pasarDialogo("", "black", "Has obtenido 33 NanoCéntimos. Te quedan " + (1.00 - dinero).toFixed(2) + "€ para poder coger el autobús");
     }
     else {
@@ -508,7 +480,6 @@ function avanzarNano() {
         // Cambiar las letras del úlitmo diálogo a su estado normal
         document.getElementById("texto").style.fontWeight = "normal";
         pasarDialogo("Pinto: ", "cadetblue", "Me da a mi que los japoneses no van a mejorar el motor...");
-
         document.getElementById("monedaNano").src = "";
     }
     pasoNano++;
@@ -696,12 +667,14 @@ function comprobarCodigo() {
     let introducido = parseInt(document.getElementById("pantalla").innerText);
     if (introducido == 333) {
         pasarDialogo("Pinto: ", "cadetblue", "Pues igual ese numerín no era el correcto. O sí, depende cómo lo mires");
-        let imagenNanoNumerin = document.createElement("img");
-        imagenNanoNumerin.style.display = "block";
-        imagenNanoNumerin.src = "img/numerin.png";
-        imagenNanoNumerin.className = "imagenNanoNumerin";
-        imagenNanoNumerin.id = "imagenNanoNumerin";
-        document.getElementById("escena").appendChild(imagenNanoNumerin);
+        if (document.getElementById("imagenNanoNumerin") == null) {
+            let imagenNanoNumerin = document.createElement("img");
+            imagenNanoNumerin.style.display = "block";
+            imagenNanoNumerin.src = "img/numerin.png";
+            imagenNanoNumerin.className = "imagenNanoNumerin";
+            imagenNanoNumerin.id = "imagenNanoNumerin";
+            document.getElementById("escena").appendChild(imagenNanoNumerin);
+        }
         document.getElementById("pantalla").innerText = "";
         let audio = document.getElementById("audioWomp");
         audio.play();
