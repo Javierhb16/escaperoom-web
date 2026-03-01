@@ -226,11 +226,11 @@ let botellasObtenidas = 0;
 function minijuegoBellingham() {
     if (segundaConverBellingham) {
         if (botellasObtenidas == 0) {
-            pasarDialogo("Pinto: ", "darkblue", "Todavia te quedan " + (3 - botellasObtenidas) + " botellas por conseguir");
+            pasarDialogo("Pinto: ", "darkblue", "Todavía te quedan " + (3 - botellasObtenidas) + " botellas por conseguir");
         } else if (botellasObtenidas == 1) {
-            pasarDialogo("Pinto: ", "darkblue", "Todavia te quedan " + (3 - botellasObtenidas) + " botellas por conseguir");
+            pasarDialogo("Pinto: ", "darkblue", "Todavía te quedan " + (3 - botellasObtenidas) + " botellas por conseguir");
         } else if (botellasObtenidas == 2) {
-            pasarDialogo("Pinto: ", "darkblue", "Todavia te quedan " + (3 - botellasObtenidas) + " botellas por conseguir");
+            pasarDialogo("Pinto: ", "darkblue", "Todavía te quedan " + (3 - botellasObtenidas) + " botellas por conseguir");
         } else if (botellasObtenidas == 3) {
             document.getElementById("texto").onclick = avanzarBellingham;
             avanzarBellingham();
@@ -324,7 +324,7 @@ function avanzarBellingham() {
             eliminarContenedorBotellas();
             let audio = document.getElementById("audioBellingham");
             audio.play();
-            document.getElementById("texto").style.fontWeight = "bold";
+            document.getElementById("parrafo").style.fontWeight = "bold";
             document.getElementById("javi").src = "img/javiDinero.png";
             document.getElementById("monedaNano").src = "img/monedanano2.png";
             dinero += 0.33;
@@ -772,7 +772,7 @@ function avanzarCajaFuerte() {
         let audio = document.getElementById("audioYay");
         audio.play();
         document.getElementById("destello").style.display = "block";
-        document.getElementById("texto").style.fontWeight = "bold";
+        document.getElementById("parrafo").style.fontWeight = "bold";
         document.getElementById("javi").src = "img/javiDinero.png";
         dinero += 0.33;
         actualizarDinero(dinero);
