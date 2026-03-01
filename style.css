@@ -6,22 +6,10 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #2e2f4f;
-    /* opcional */
+    /* background: #2e2f4f; */
+    background: #4c508f;
+background: radial-gradient(circle, rgba(76, 80, 143, 1) 0%, rgba(46, 47, 79, 1) 100%);
     font-family: 'Bricolage Grotesque';
-}
-
-.dinero {
-    position: absolute;
-    color: rgb(0, 152, 0);
-    top: 50px;
-    left: 50px;
-    background-color: rgb(255, 255, 255);
-    padding: 15px;
-    text-align: center;
-    font-size: 24px;
-    border-radius: 20px;
-    display: none;
 }
 
 .escena {
@@ -31,7 +19,6 @@ body {
     background-position: bottom;
     width: 1307px;
     height: 689px;
-
     border-radius: 10px;
     /* box-shadow: 0 0 14px rgba(0,0,0,0.5); */
 }
@@ -71,11 +58,11 @@ body {
 
 
 .texto {
-    width: 70vw;
+    width: 60vw;
     margin-top: 20px;
-    padding: 20px;
+    padding: 20px 40px;
     background: white;
-    border-radius: 10px;
+    border-radius: 16px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     text-align: center;
     font-size: 22px;
@@ -83,20 +70,38 @@ body {
     -webkit-box-shadow: 0px 0px 34px 0px rgba(0, 0, 0, 1);
     -moz-box-shadow: 0px 0px 34px 0px rgba(0, 0, 0, 1);
     box-shadow: 0px 0px 34px 0px rgba(0, 0, 0, 1);
+    animation: 0.2s ease;
+}
+
+.dinero {
+    position: absolute;
+    color: rgb(73, 174, 73);
+    font-weight: bold;
+    border-left: 10px solid;
+    top: 50px;
+    left: 50px;
+    background-color: #ffffff;
+    padding: 15px;
+    text-align: center;
+    font-size: 24px;
+    border-radius: 0px 16px 0px 16px;
+    -webkit-box-shadow: 0px 0px 34px 0px rgba(0, 0, 0, 1);
+    -moz-box-shadow: 0px 0px 34px 0px rgba(0, 0, 0, 1);
+    box-shadow: 0px 0px 34px 0px rgba(0, 0, 0, 1);
+    display: none;
 }
 
 .objetivo {
     position: absolute;
     width: 281px;
-    height: 205px;
-    margin-left: 1483px;
-    margin-top: 1px;
+    top: 50px;
+    right: 50px;
     padding: 20px;
     background: white;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    border-radius: 0px 16px 0px 16px;
+    border-left: 10px solid rgb(193, 193, 193);
     text-align: left;
-    font-size: 22px;
+    font-size: 24px;
     display: none;
     -webkit-box-shadow: 0px 0px 34px 0px rgba(0, 0, 0, 1);
     -moz-box-shadow: 0px 0px 34px 0px rgba(0, 0, 0, 1);

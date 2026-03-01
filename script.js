@@ -26,7 +26,7 @@ function jugar() {
 actualizarDinero(dinero);
 
 function actualizarDinero(dinero) {
-    document.getElementById("dinero").innerText = dinero + "€";
+    document.getElementById("dinero").innerText = "Dinero: " + dinero + "€";
 }
 
 function irCasa() {
@@ -86,7 +86,8 @@ function calcularTiempoFinal() {
 
 let pasoLobato = 0;
 
-function avanzarLobato() {    
+function avanzarLobato() {
+    document.getElementById("texto").style.cursor = "pointer";    
     if (pasoLobato == 0) {
         document.getElementById("javi").src = "img/javisorprendido.png";
         pasarDialogo("Lobato: ", "orange", "¡Qué pasa Javi! ¡Vaya fiesta te has pegado!");
@@ -117,6 +118,7 @@ function avanzarLobato() {
         pasarDialogo("Pinto: ", "cadetblue", "¡Has terminado el juego! Y solo te ha llevado " + tiempoFinalMs + ".");
     }
     else {
+        document.getElementById("texto").style.cursor = "default";    
         document.getElementById("texto").onclick = null;
         alert("¡Juego completado en " + tiempoFinalMs + "!");
         location.reload(); // Reinicia el juego
@@ -263,6 +265,7 @@ function cogerBotella3() {
 function avanzarBellingham() {
 
     if (botellasObtenidas == 0 && segundaConverBellingham == false) {
+        document.getElementById("texto").style.cursor = "pointer";    
         if (pasoBellingham == 0) {
             pasarDialogo("Javier: ", "darkblue", "¿Bellingham? ¿Pero tú no tenías partido hoy?");
         } else if (pasoBellingham == 1) {
@@ -274,6 +277,7 @@ function avanzarBellingham() {
         } else if (pasoBellingham == 4) {
             pasarDialogo("Javier: ", "darkblue", "Me parece bien, voy a buscarlas");
         } else if (pasoBellingham == 5) {
+            document.getElementById("texto").style.cursor = "default";    
             document.getElementById("texto").onclick = null;
             document.getElementById("objetivo").innerText = "-Objetivo actual: \n Conseguirle las botellas a Bellingham";
             spawnBotellas();
@@ -284,6 +288,7 @@ function avanzarBellingham() {
         document.getElementById("minijuegoBellingham").style.display = "none";
         document.getElementById("volverSalon").style.display = "none";
         if (pasoBellingham == 6) {
+            document.getElementById("texto").style.cursor = "pointer";
             pasarDialogo("Javier: ", "darkblue", "He vuelto Bellingham. Aquí tienes las tres");
         } else if (pasoBellingham == 7) {
             pasarDialogo("Bellingham: ", "darkorchid", "Grasias amigou, lo prometidou es deuda. Aquí la tienes");
@@ -301,6 +306,7 @@ function avanzarBellingham() {
         }
         else {
             document.getElementById("escena").style.backgroundImage = "url(img/cocina.png)";
+            document.getElementById("texto").style.cursor = "default";
             document.getElementById("texto").onclick = null; // Terminar diálogo
             // Finalizar el minijuego y volver a la escena anterior
             if (dinero == 1) {
@@ -424,6 +430,7 @@ function minijuegoNano() {
 
 function avanzarNano() {
     if (pasoNano == 0) {
+        document.getElementById("texto").style.cursor = "pointer";
         pasarDialogo("Javier: ", "darkblue", "¡PERO SI ES FERNANDO ALONSO!");
     }
     else if (pasoNano == 1) {
@@ -445,9 +452,11 @@ function avanzarNano() {
     else if (pasoNano == 6) {
         pasarDialogo("Fernando Alonso: ", "darkgreen", "Dime, ¿cuál de las siguientes ecuaciones da '33' como resultado?");
         document.getElementById("javi").src = "img/javiPensativo.png";
+        document.getElementById("texto").style.cursor = "default";
         preguntasMinijuegoNano();
     }
     else if (pasoNano == 8) {
+        document.getElementById("texto").style.cursor = "pointer";
         pasarDialogo("Fernando Alonso: ", "darkgreen", "¡PREMIO PARA EL CABALLERO!");
         document.getElementById("javi").src = "img/javisorprendido.png";
     }
@@ -478,6 +487,7 @@ function avanzarNano() {
         if (dinero == 1) {
             document.getElementById("objetivo").innerText = "-Objetivo actual: \n Volver al bus";
         } 
+        document.getElementById("texto").style.cursor = "default";
         document.getElementById("destello").style.display = "none";
         irPatio();
         document.getElementById("javi").src = "img/javi.png";
@@ -718,6 +728,7 @@ let pasoCajaFuerte = 0;
 
 function avanzarCajaFuerte() {
     if (pasoCajaFuerte == 0) {
+        document.getElementById("texto").style.cursor = "pointer";
         document.getElementById("javi").src = "img/javisorprendido.png";
         pasarDialogo("Javier: ", "darkblue", "¡Pues sí que tiene dinero esta gente!");
         document.getElementById("escena").style.backgroundImage = "url(img/cajaFuerteAbierta.png)";
@@ -734,6 +745,7 @@ function avanzarCajaFuerte() {
         actualizarDinero(dinero);
         pasarDialogo("", "black", "Has obtenido 33 NanoCéntimos. Te quedan " + (1.00 - dinero).toFixed(2) + "€ para poder coger el autobús");
     } else {
+        document.getElementById("texto").style.cursor = "default";
         if (dinero == 1) {
             document.getElementById("objetivo").innerText = "-Objetivo actual: \n Volver al bus";
         }
