@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
 
 body {
     margin: 0;
@@ -8,12 +9,38 @@ body {
     align-items: center;
     /* background: #2e2f4f; */
     background: #4c508f;
-background: radial-gradient(circle, rgba(76, 80, 143, 1) 0%, rgba(46, 47, 79, 1) 100%);
+    background: radial-gradient(circle, rgba(76, 80, 143, 1) 0%, rgba(46, 47, 79, 1) 100%);
     font-family: 'Bricolage Grotesque';
+    /* font-family: 'Rubik'; */
+}
+
+#portada {
+    position: absolute;
+    height: 100vh;
+    margin: 0 auto;
+    -webkit-box-shadow:
+    0 0 60px 40px #FF8080,
+    -60px 0 80px 50px #FFE488,
+    60px 0 80px 50px #80C7FF,
+    0 -60px 80px 50px #8CFF85,
+    0 60px 80px 50px #E488FF,
+    -80px 80px 120px 60px #FF616B,
+    80px -80px 120px 60px #8E5CFF,
+    0 0 150px 80px rgba(0,0,0,0.8);
+
+    box-shadow:
+    0 0 60px 40px #FF8080,
+    -60px 0 80px 50px #FFE488,
+    60px 0 80px 50px #80C7FF,
+    0 -60px 80px 50px #8CFF85,
+    0 60px 80px 50px #E488FF,
+    -80px 80px 120px 60px #FF616B,
+    80px -80px 120px 60px #8E5CFF,
+    0 0 150px 80px rgba(0,0,0,0.8);
 }
 
 .escena {
-    background-image: url("img/escenaInicial.png");
+    /* background-image: url("img/paradaBus.png"); */
     background-size: contain;
     background-repeat: no-repeat;
     background-position: bottom;
@@ -49,11 +76,12 @@ background: radial-gradient(circle, rgba(76, 80, 143, 1) 0%, rgba(46, 47, 79, 1)
 
 .inicio {
     position: absolute;
-    width: 274px;
-    height: 83px;
-    top: 570px;
-    right: 823px;
+    width: 448px;
+    height: 153px;
+    top: 744px;
+    right: 736px;
     cursor: pointer;
+    border-radius: 1000px;
 }
 
 
@@ -132,6 +160,7 @@ background: radial-gradient(circle, rgba(76, 80, 143, 1) 0%, rgba(46, 47, 79, 1)
     height: 394px;
     top: 266px;
     right: 428px;
+    display: none;
 }
 
 .batman {
@@ -159,6 +188,15 @@ background: radial-gradient(circle, rgba(76, 80, 143, 1) 0%, rgba(46, 47, 79, 1)
     top: 172px;
     right: 1286px;
     display: none;
+}
+
+.puertaDlc {
+    position: absolute;
+    display: none;
+    height: 256px;
+    top: 203px;
+    width: 111px;
+    left: 955px;
 }
 
 .cocina {
