@@ -119,6 +119,37 @@ body {
     display: none;
 }
 
+.contenedorBotellas {
+    position: absolute;
+    display: none;
+    background-color: white;
+    top: 150px;
+    left: 50px;
+    width: 300px;
+    height: 120px;
+    border-radius: 0px 16px 0px 16px;
+    border-left: 10px solid palevioletred;
+    -webkit-box-shadow: 0px 0px 34px 0px rgba(0, 0, 0, 1);
+    -moz-box-shadow: 0px 0px 34px 0px rgba(0, 0, 0, 1);
+    box-shadow: 0px 0px 34px 0px rgba(0, 0, 0, 1);
+}
+
+.botellaContenedor {
+    height: 100px;
+    position: absolute;
+    top: 10px;
+    left: 15px;
+    display: none;
+}
+
+#b2 {
+    left: 116px;
+} 
+
+#b3 {
+    left: 220px;
+}
+
 .objetivo {
     position: absolute;
     width: 281px;
@@ -230,8 +261,8 @@ body {
 .botella2,
 .botella3 {
     position: absolute;
-    width: 117px;
-    height: 117px;
+    width: 70px;
+    height: 70px;
     display: none;
     cursor: pointer;
     transition: 0.2s ease;

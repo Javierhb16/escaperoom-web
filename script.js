@@ -256,23 +256,41 @@ function spawnBotellas() {
     irCocina();
 }
 
+function actualizarContenedorBotellas(botellasObtenidas) {
+    let botellasContenedor = document.getElementsByClassName("botellaContenedor");
+    for (let i = 0; i < botellasObtenidas; i++) {
+        botellasContenedor[i].style.display = "block";
+    }
+}
+
+function eliminarContenedorBotellas() {
+    let botellasContenedor = document.getElementsByClassName("botellaContenedor");
+    for (let i = 0; i < botellasContenedor.length; i++) {
+        botellasContenedor[i].remove();
+    }
+    let contenedorBotellas = document.getElementById("contenedorBotellas");
+    contenedorBotellas.remove();
+}
+
 function cogerBotella1() {
     document.getElementById("botella1").remove();
     botellasObtenidas++;
+    actualizarContenedorBotellas(botellasObtenidas);
 }
 
 function cogerBotella2() {
     document.getElementById("botella2").remove();
     botellasObtenidas++;
+    actualizarContenedorBotellas(botellasObtenidas);
 }
 
 function cogerBotella3() {
     document.getElementById("botella3").remove();
     botellasObtenidas++;
+    actualizarContenedorBotellas(botellasObtenidas);
 }
 
 function avanzarBellingham() {
-
     if (botellasObtenidas == 0 && segundaConverBellingham == false) {
         document.getElementById("texto").style.cursor = "pointer";    
         if (pasoBellingham == 0) {
@@ -290,6 +308,7 @@ function avanzarBellingham() {
             document.getElementById("texto").onclick = null;
             document.getElementById("objetivo").innerHTML = "<b><u>Objetivo actual</u></b><br>Conseguirle las tres botellas de la felicidad a Bellingham";
             spawnBotellas();
+            document.getElementById("contenedorBotellas").style.display = "block";
         }
     } 
     else {
@@ -302,6 +321,7 @@ function avanzarBellingham() {
         } else if (pasoBellingham == 7) {
             pasarDialogo("Bellingham: ", "darkorchid", "Grasias amigou, lo prometidou es deuda. Aquí la tienes");
         } else if (pasoBellingham == 8) {
+            eliminarContenedorBotellas();
             let audio = document.getElementById("audioBellingham");
             audio.play();
             document.getElementById("texto").style.fontWeight = "bold";
@@ -592,8 +612,8 @@ function salirBanyo() {
 let puedeJugarCajaFuerte = true;
 
 function minijuegoBanyo() {
-    document.getElementById("nariz").style.display = "none";
     if (puedeJugarCajaFuerte) {
+        document.getElementById("nariz").style.display = "none";
         crearKeypad();
         document.getElementById("escena").style.backgroundImage = "url(img/keypad.png)";
         document.getElementById("minijuegoBanyo").style.display = "none";
@@ -730,7 +750,6 @@ function abrirCajaFuerte() {
         huellas[i].style.display = "none";
     }
     document.getElementById("pantalla").style.display = "none";
-
     document.getElementById("texto").onclick = function () {
         avanzarCajaFuerte();
     }
