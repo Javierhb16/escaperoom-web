@@ -14,6 +14,8 @@
 
 2. Abre el archivo index.html en tu navegador.
 
+También es posible hacer clic en Code > Download ZIP, y descomprimir el fichero descargado.
+
 ## 🧠 Aprendizajes
 
 Durante el desarrollo aprendimos a:
