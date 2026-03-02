@@ -1,6 +1,8 @@
 let tiempoInicio;
 let tiempoFinalMs;
 let dinero = 0.01;
+let primerDialogo = true;
+
 
 // Bajar volumen de los audios
 let audios = document.getElementsByTagName("audio");
@@ -28,6 +30,13 @@ actualizarDinero(dinero);
 
 function actualizarDinero(dinero) {
     document.getElementById("dinero").innerText = "Dinero: " + dinero + "€";
+}
+
+function comprobarPrimerDialogo() {
+    if (primerDialogo) { 
+        alert("Pulsa sobre el cuadro de diálogo para avanzar en la conversación.")
+        primerDialogo = false;
+    }
 }
 
 function irCasa() {
@@ -250,6 +259,11 @@ function minijuegoBellingham() {
 
 
 function spawnBotellas() {
+    let botellasContenedor = document.getElementsByClassName("botellaContenedor");
+    for (let i = 0; i < 3; i++) {
+        botellasContenedor[i].style.display = "block";
+    }
+
     document.getElementById("escena").style.backgroundImage = "url(img/cocina.png)";
     botellasApagadas = false;
     segundaConverBellingham = true;
@@ -259,7 +273,7 @@ function spawnBotellas() {
 function actualizarContenedorBotellas(botellasObtenidas) {
     let botellasContenedor = document.getElementsByClassName("botellaContenedor");
     for (let i = 0; i < botellasObtenidas; i++) {
-        botellasContenedor[i].style.display = "block";
+        botellasContenedor[i].style.opacity = "100%";
     }
 }
 
@@ -310,6 +324,7 @@ function avanzarBellingham() {
             spawnBotellas();
             document.getElementById("contenedorBotellas").style.display = "block";
         }
+        comprobarPrimerDialogo();
     } 
     else {
         document.getElementById("escena").style.backgroundImage = "url(img/bellinghamDifuminado.png)";
@@ -453,7 +468,6 @@ function minijuegoNano() {
         document.getElementById("volverDentro").style.display = "none";
         document.getElementById("patio").style.display = "none";
         document.getElementById("homer").style.display = "none";
-        pasoNano = 0;
         document.getElementById("texto").onclick = avanzarNano;
         avanzarNano();
     } else {
@@ -530,6 +544,7 @@ function avanzarNano() {
         pasarDialogo("Pinto: ", "cadetblue", "Me da a mi que los japoneses no van a mejorar el motor...");
         document.getElementById("monedaNano").src = "";
     }
+    comprobarPrimerDialogo();
     pasoNano++;
 }
 
@@ -793,5 +808,6 @@ function avanzarCajaFuerte() {
         document.getElementById("parrafo").style.fontWeight = "normal";
         puedeJugarCajaFuerte = false;
     }
+    comprobarPrimerDialogo();
     pasoCajaFuerte++;
 }
