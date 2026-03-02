@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
 
 body {
     margin: 0;
@@ -11,7 +10,6 @@ body {
     background: #4c508f;
     background: radial-gradient(circle, rgba(76, 80, 143, 1) 0%, rgba(46, 47, 79, 1) 100%);
     font-family: 'Bricolage Grotesque';
-    /* font-family: 'Rubik'; */
 }
 
 #portada {
@@ -40,14 +38,12 @@ body {
 }
 
 .escena {
-    /* background-image: url("img/paradaBus.png"); */
     background-size: contain;
     background-repeat: no-repeat;
     background-position: bottom;
     width: 1307px;
     height: 689px;
     border-radius: 10px;
-    /* box-shadow: 0 0 14px rgba(0,0,0,0.5); */
 }
 
 .derecha,
@@ -399,8 +395,6 @@ body {
     width: 600px;
 }
 
-
-
 .ecuaciones {
     display: none;
     border: 4px solid rgba(116, 116, 116, 0.124);
@@ -582,4 +576,3 @@ body {
     width: 1200px;
     height: 700px;
 }
-

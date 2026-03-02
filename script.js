@@ -3,7 +3,6 @@ let tiempoFinalMs;
 let dinero = 0.01;
 let primerDialogo = true;
 
-
 // Bajar volumen de los audios
 let audios = document.getElementsByTagName("audio");
 for (let i = 0; i < audios.length; i++) {
@@ -115,14 +114,14 @@ function avanzarLobato() {
     }
     else if (pasoLobato == 4) {
         document.getElementById("escena").style.backgroundImage = "url(img/lobato.png)";
-        pasarDialogo("Lobato: ", "orange", "No, perdóname a mi, no debería haberte gritado");
+        pasarDialogo("Lobato: ", "orange", "No, perdóname a mí, no debería haberte gritado");
     }
     else if (pasoLobato == 5) {
         pasarDialogo("Lobato: ", "orange", "Mira, por ser tú te llevo gratis a casa. ¡Venga, sube!");
     }
     else if (pasoLobato == 6) {
         document.getElementById("javi").src = "img/javi.png";
-        pasarDialogo("Javier: ", "darkblue", "Bueno, al final tanto esfuerzo para nada, pero como decía mi abuelo: “Bien está lo que bien acaba”");
+        pasarDialogo("Javier: ", "darkblue", "Bueno... al final tanto esfuerzo para nada, pero como decía mi abuelo: “Bien está lo que bien acaba”");
     }
     else if (pasoLobato == 7) {
         pasarDialogo("Pinto: ", "cadetblue", "¡Has terminado el juego! Y solo te ha llevado " + tiempoFinalMs + ".");
@@ -257,13 +256,11 @@ function minijuegoBellingham() {
     }
 }
 
-
 function spawnBotellas() {
     let botellasContenedor = document.getElementsByClassName("botellaContenedor");
     for (let i = 0; i < 3; i++) {
         botellasContenedor[i].style.display = "block";
     }
-
     document.getElementById("escena").style.backgroundImage = "url(img/cocina.png)";
     botellasApagadas = false;
     segundaConverBellingham = true;
